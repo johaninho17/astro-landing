@@ -3,32 +3,58 @@ interface Props {}
 
 const {} = Astro.props;
 ---
-<div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div
-            class="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-        <img class="col-span-2 max-h-16 w-full object-contain lg:col-span-1"
-             src="./company/c1.jpg" alt="Transistor" width="158"
-             height="48">
-        <img class="col-span-2 max-h-16 w-full object-contain lg:col-span-1"
-             src="./company/c2.jpg" alt="Reform" width="158"
-             height="48">
-        <img class="col-span-2 max-h-16 w-full object-contain lg:col-span-1"
-             src="./company/c3.jpg" alt="Tuple" width="158"
-             height="48">
-        <img class="col-span-2 max-h-16 w-full object-contain sm:col-start-2 lg:col-span-1"
-             src="./company/c2.jpg" alt="SavvyCal" width="158"
-             height="48">
-        <img class="col-span-2 col-start-2 max-h-16 w-full object-contain sm:col-start-auto lg:col-span-1"
-             src="./company/c1.jpg" alt="Statamic" width="158"
-             height="48">
-    </div>
-    <div class="mt-8 flex justify-center">
-        <p class="relative rounded-full px-4 py-1.5 text-sm leading-6 text-gray-600 ring-1 ring-inset ring-gray-900/10 hover:ring-gray-900/20">
-            <span class="hidden md:inline">Our clients save an average of $40,000 per year.</span>
-            <a href="#" class="font-semibold text-black">
-                <span class="absolute inset-0" aria-hidden="true"></span>
-                Read our case study <span aria-hidden="true">&rarr;</span>
-            </a>
+
+<div class="mx-auto mt-1 max-w-7xl px-1 sm:mt-1 lg:px-1">
+    <div class="mx-auto max-w-4xl lg:text-center">
+        <!-- <h2 class="text-base font-semibold leading-7">
+            <span class="bg-black text-white px-4 py-1 rounded-full">Faster communication</span>
+        </h2> -->
+        <p class="mt-2 text-3xl font-roboto tracking-tight text-gray-900 sm:text-4xl">
+            <strong>Seize the Opportunities - Avoid the Pitfalls</strong>
         </p>
+    </div>
+    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-7xl">
+        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16">
+            <div class="relative pl-16">
+                <dt class="text-base font-semibold leading-7 text-gray-900">
+                    <div class="items-center justify-center">
+                        <img class="" src="src/images/growth.png" alt="">
+                    </div>
+                    Growth by Design
+                </dt>
+                <dd class="mt-2 text-base leading-7 text-gray-600">
+                    Europe is the first major international market for U.S. Companies. Well-run SaaS Companies derive about 30% of their global revenue from this region. To generate similar revenue growth within the U.S. , Companies would need to innovate with new products or customer segments.
+                </dd>
+            </div>
+            <div class="relative pl-16">
+                <dt class="text-base font-semibold leading-7 text-gray-900">
+                    <div class="items-center justify-center">
+                        <img class="" src="src/images/pitfalls.png" alt="">
+                    </div>
+                    Avoid Common Pitfalls
+                </dt>
+                <dd class="mt-2 text-base leading-7 text-gray-600">
+                    <ul style="list-style-type: square">
+                        <li>Insufficient international management expertise and resources</li>
+                        <li>Unawareness of cultural and regulatory differences</li>
+                        <li>Inefficiencies caused by poor location choices</li>
+                        <li>Difficulties in hiring and managing of local personnel</li>
+                        <li>Inadequate preparation leading to poor timing</li>
+                    </ul>
+                </dd>
+            </div>
+            <div class="relative pl-16">
+                <dt class="text-base font-semibold leading-7 text-gray-900">
+                    <div class="items-center justify-center">
+                        <img class="" src="src/images/engage.png" alt="">
+                    </div>
+                    Engage with Experts
+                </dt>
+                <dd class="mt-2 text-base leading-7 text-gray-600">
+                    Companies need guidance from experts with firsthand European experience. Go Europe Consulting brings invaluable local insights, 
+                    estabilshed networks, and the stragic acumen neccessary to accelereate the European growth journey.
+                </dd>
+            </div>
+        </dl>
     </div>
 </div>
