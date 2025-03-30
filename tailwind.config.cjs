@@ -12,6 +12,7 @@ module.exports = {
 				'brussels': "url('/src/images/brussels.png')",
 				'amsterdam': "url('/src/images/amsterdam.png')",
 				'bluehue': "url('/src/images/blue-hue.png')",
+				'meeting': "url('/src/images/positive-startup-group-with-laptops-chatting-meeting-room.png')",
 			},
 			fontFamily: {
 				'roboto': ['Roboto', 'sans-serif'],
