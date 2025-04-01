@@ -1,76 +1,110 @@
 ---
-interface Props {
-}
+interface Props {}
 
 const {} = Astro.props;
 ---
 
-<div class="mx-auto mt-12 px-6 sm:mt-32 lg:px-8 bg-[#F7F8F2]">
-    <div class="">
+<div class="mx-auto sm:mt-32 py-4 lg:px-8 bg-[#F7F8F2]">
+    <div class="mt-16">
         <div class="mx-auto max-w-2xl lg:text-center">
-            <h2 class="mt-16 text-3xl font-roboto tracking-tight text-gray-900 sm:text-4xl">
+            <h2
+                class="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
                 Our Expertise
             </h2>
         </div>
-        <dl class="mt-16 grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-4 lg:gap-y-16">
-            <div class="relative pl-16 rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 relative bg-white shadow-2xl text-center">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="items-center justify-center">
-                        <svg>
-                            <image href="src/images/svg/it-industry.svg" />
-                        </svg>
+        <div
+            class="mt-16 m-32 grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-4 lg:gap-y-16"
+        >
+            <div
+                class="relative rounded-3xl ring-gray-900/10 sm:p-10 relative bg-white shadow-2xl"
+            >
+                <dt class="text-xl font-semibold leading-7 text-gray-900">
+                    <div class="">
+                        <img
+                            class="h-auto w-auto mb-8"
+                            src="images/svg/it-industry.svg"
+                        />
                     </div>
                     IT Industry Experts with Proven Experience
                 </dt>
-                <dd class="mt-2 text-base leading-7 line-clamp-4 text-gray-600 text-xs">
-                    We are a group of IT enthusiasts, founders, former Big Corp managers, technologists, global sales executives, and market strategists.
+                <dd
+                    class="mt-4 text-sm leading-7 text-gray-600"
+                >
+                    We are a group of IT enthusiasts, founders, former Big Corp
+                    managers, technologists, global sales executives, and market
+                    strategists.
                 </dd>
             </div>
-            <div class="relative pl-16 rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 relative bg-white shadow-2xl text-center">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="items-center justify-center">
-                        <svg>
-                            <image href="src/images/svg/global.svg" />
-                        </svg>
+            <div
+                class="relative rounded-3xl ring-gray-900/10 sm:p-10 relative bg-white shadow-2xl"
+            >
+                <dt class="text-xl font-semibold leading-7 text-gray-900">
+                    <div class="">
+                        <img
+                            class="h-auto w-auto mb-8"
+                            src="images/svg/global.svg"
+                        />
                     </div>
                     Global Perspective, Local Expertise
                 </dt>
-                <dd class="mt-2 text-base leading-7 line-clamp-4 text-gray-600 text-xs">
-                    We live and work on both sides of the Atlantic, knowing the ins and outs of the North American and European IT markets.
+                <dd
+                    class="mt-4 text-sm leading-7 text-gray-600"
+                >
+                    We live and work on both sides of the Atlantic, knowing the
+                    ins and outs of the North American and European IT markets.
                 </dd>
             </div>
-            <div class="relative pl-16 rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 relative bg-white shadow-2xl text-center">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="items-center justify-center">
-                        <svg>
-                            <image href="src/images/svg/scaling.svg" />
-                        </svg>
+            <div
+                class="relative rounded-3xl ring-gray-900/10 sm:p-10 relative bg-white shadow-2xl"
+            >
+                <dt class="text-xl font-semibold leading-7 text-gray-900">
+                    <div class="">
+                        <img
+                            class="h-auto w-auto mb-8"
+                            src="images/svg/scaling.svg"
+                        />
                     </div>
                     Scaling Businesses Across Borders
                 </dt>
-                <dd class="mt-2 text-base leading-7 line-clamp-4 text-gray-600 text-xs">
-                    We have built and expanded European and asian subsidiaries for our former employers.
+                <dd
+                    class="mt-4 text-sm leading-7 text-gray-600"
+                >
+                    We have built and expanded European and asian subsidiaries
+                    for our former employers.
                 </dd>
             </div>
-            <div class="relative pl-16 rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 relative bg-white shadow-2xl text-center">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="items-center justify-center">
-                        <svg>
-                            <image href="src/images/svg/intersection.svg" />
-                        </svg>
+            <div
+                class="relative rounded-3xl ring-gray-900/10 sm:p-10 relative bg-white shadow-2xl"
+            >
+                <dt class="text-xl font-semibold leading-7 text-gray-900">
+                    <div class="">
+                        <img
+                            class="h-auto w-auto mb-8"
+                            src="images/svg/intersection.svg"
+                        />
                     </div>
                     At the Intersection of Business and Technology
                 </dt>
-                <dd class="mt-2 text-base leading-7 line-clamp-5 text-gray-600 text-xs">
-                    We have deep knowledge at the intersection of business and technology. We understand how your customers are leveraging technology for business goals.
+                <dd
+                    class="mt-4 text-sm leading-7 line-clamp-5 text-gray-600"
+                >
+                    We have deep knowledge at the intersection of business and
+                    technology. We understand how your customers are leveraging
+                    technology for business goals.
                 </dd>
             </div>
-        </dl>
+        </div>
         <div class="mt-12 mb-12 lg:justify-center text-center">
-            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
-                <a href="/contact" class="text-sm font-semibold leading-6 text-gray-900">More About Us <span aria-hidden="true">&rarr;</span></a>
-              </button>         
-             </div>
-
+            <button
+                class="bg-[#B6CB23] hover:bg-green-700 text-white font-bold py-4 px-4 rounded-xl"
+            >
+                <a
+                    href="/contact"
+                    class="text-sm font-semibold leading-6 text-[#1B4671]"
+                    >More About Us <span aria-hidden="true">&rarr;</span></a
+                >
+            </button>
+        </div>
     </div>
 </div>

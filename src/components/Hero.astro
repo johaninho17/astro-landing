@@ -1,62 +1,72 @@
 ---
-interface Props {
-}
+interface Props {}
 
 const {} = Astro.props;
 ---
 
-<div class="">
-    <div id="background" class="relative isolate overflow-hidden bg-gradient-to-b from-indigo-100/20 bg-paris bg-contain bg-center transition-opacity duration-1000 ease-in-out">
-        <div class="absolute inset-0 bg-bluehue opacity-50 mix-blend-multiply"></div>
-        <div class="mx-auto max-w-7xl pb-24 pt-10 sm:pb-32 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:py-40">
-            <div class="px-6 lg:px-0 lg:pt-4">
-                <div class="mx-auto max-w-2xl">
-                    <div class="max-w-lg">
-                        <h1 class="mt-10 text-4xl font-roboto tracking-tight text-white sm:text-6xl">
-                            Your Partner in Entering the European IT Market
-                        </h1>
-                        <p class="mt-6 text-lg text-white"><strong>We advise and assist IT companies in establishing 
-                            and expanding their presence in the European Market.</strong></p>
-                    </div>
-                </div>
-            </div>
+<div class="relative isolate overflow-hidden">
+    <!-- Image -->
+            <img
+                id="background-image"
+                src="images/paris.png"
+                alt="Background"
+                class="w-full h-auto object-cover transition-opacity duration-1000 ease-in-out"
+            />
 
-            <div class="mt-20 px-1 sm:mt-24 md:mx-auto md:max-w-2xl lg:mx-0 lg:mt-0 lg:w-screen relative">
+        <!-- Overlay -->
+        <div class="absolute inset-0">
+            <img
+            id="background-image"
+            src="images/blue-hue.png"
+            alt="Background"
+            class="absolute w-full h-auto object-cover"
+        />
+            <div class="absolute max-w-2xl mx-48 my-48">
+                <h1
+                    class="text-2xl font-black tracking-tight text-white sm:text-6xl"
+                >
+                    Your Partner in Entering the European IT Market
+                </h1>
+                <p class="mt-6 text-lg font-roboto text-white line-clamp-2">
+                    <strong
+                        >We advise and assist IT companies in establishing and
+                        expanding their presence in the European Market.</strong
+                    >
+                </p>
             </div>
-
         </div>
-        <div class="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32"></div>
     </div>
+
+    <script type="module" client:load>
+        const images = [
+            "images/paris.png",
+            "images/london.png",
+            "images/berlin.png",
+            "images/stockholm.png",
+            "images/brussels.png",
+            "images/amsterdam.png",
+            // Add more images as needed
+        ];
+        let currentIndex = 0;
+        const backgroundImageElement =
+            document.getElementById("background-image");
+
+        function changeBackground() {
+            // Add opacity class to make the current image fade out
+            backgroundImageElement.classList.add("opacity-0");
+
+            setTimeout(() => {
+                currentIndex++;
+                if (currentIndex >= images.length) {
+                    currentIndex = 0;
+                }
+                backgroundImageElement.src = images[currentIndex];
+                // Remove the opacity class to make the new image fade in
+                backgroundImageElement.classList.remove("opacity-0");
+            }, 1000); // This time should match the duration of the opacity transition
+        }
+
+        // Starts background transition every 4 seconds (includes 1 second for transition duration)
+        setInterval(changeBackground, 4000);
+    </script>
 </div>
-
-<script type="module" client:load>
-    const images = [
-        'bg-paris',
-        'bg-london',
-        'bg-berlin',
-        'bg-stockholm',
-        'bg-brussels',
-        'bg-amsterdam',
-        // Add more images as needed
-    ];
-    let currentIndex = 0;
-    const backgroundElement = document.getElementById('background');
-
-    function changeBackground() {
-        // Add opacity class 0 to make the current background transparent
-        backgroundElement.classList.add('opacity-0');
-
-        setTimeout(() => {
-            currentIndex++;
-            if (currentIndex >= images.length) {
-                currentIndex = 0;
-            }
-            backgroundElement.className = `relative isolate overflow-hidden bg-gradient-to-b from-indigo-100/20 ${images[currentIndex]} bg-cover bg-center transition-opacity duration-1000 ease-in-out`;
-            // Remove the opacity class to make the new background visible
-            backgroundElement.classList.remove('opacity-0');
-        }, 1000); // This time should match the duration of the opacity transition
-    }
-
-    // Starts background transition every 4 seconds (includes 1 second for transition duration)
-    setInterval(changeBackground, 4000);
-</script>
