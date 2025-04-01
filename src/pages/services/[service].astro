@@ -1,0 +1,152 @@
+---
+import Services from '../../components/Services.astro';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+    return [
+        {
+            params: { service: "assessment-and-planning" },
+            props: {
+                title: "Assessment & Planning",
+                description: "Begin your journey into Europe's dynamic IT market with our comprehensive Assessment and Planning service. We evaluate your current operations, identify key expansion opportunities, and craft a tailored roadmap that positions your company for success in Europe.",
+                expertise: [
+                    "Understand the European market.",
+                    "Define goals and objectives of your market entry.",
+                    "Ensure alignment with your company's overall strategy.",
+                    "Identify the most promising target markets and customer segments.",
+                    "Analyze and balance risk versus opportunities of a market entry.",
+                    "Get a clear view of your local competition and the overall competitive landscape.",
+                    "Find the blue oceans and the best country to begin with.",
+                    "Map out your long-term expansion strategy and roadmap."
+                ],
+                img: "/images/assessment/assessment-planning.png",
+                icons: [
+                    "/images/assessment/icon-1.svg",
+                    "/images/assessment/icon-2.svg",
+                    "/images/assessment/icon-3.svg",
+                    "/images/assessment/icon-4.svg",
+                    "/images/assessment/icon-5.svg",
+                    "/images/assessment/icon-6.svg",
+                    "/images/assessment/icon-7.svg",
+                    "/images/assessment/icon-8.svg"
+                ]
+            },
+        },
+        {
+            params: { service: "sales-go-to-market" },
+            props: {
+                title: "Sales and Go-to-Market",
+                description: "Unlock European revenue streams and build high-performing local sales organizations with our Sales and Go-to-Market services. We guide you through successful market entry by defining target segments, optimizing sales channels, and building key partnerships. Design effective sales coverage and service delivery models that set you up for growth while keeping your financial goals intact. We assist with revenue planning, budget management, and performance tracking, helping businesses stay on course for long-term success.",
+                expertise: [
+                    "Segment your target markets and define your Ideal Customer Profile (ICP).",
+                    "Validate value propositions and differentiators for the European market.",
+                    "Design the best-fit sales model, channel strategy and incentive structures.",
+                    "Establish the right sales& services coverage models and organizational setup.",
+                    "Stay on course with revenue planning and tracking your business progress."
+                ],
+                img: "/images/sales/sales.png",
+                icons: [
+                    "/images/sales/icon-1.svg",
+                    "/images/sales/icon-2.svg",
+                    "/images/sales/icon-3.svg",
+                    "/images/sales/icon-4.svg",
+                    "/images/sales/icon-5.svg"
+                ]
+            },
+        },
+        {
+            params: { service: "marketing-and-pipeline" },
+            props: {
+                title: "Marketing and Pipeline",
+                description: "We help businesses build a strong market presence through comprehensive digital marketing strategies, including social media and content marketing. We enhance brand credibility with targeted press coverage and maximize industry exposure through events and trade shows. Additionally, we position clients as thought leaders by securing speaker opportunities while driving customer engagement through strategic outbound campaigns.",
+                expertise: [
+                    "Identify the most effective marketing channels.",
+                    "Build press and PR relationships.",
+                    "Secure participation in local industry events and trade shows.",
+                    "Benefit from speaker opportunities and build a credible expert brand reputation.",
+                ],
+                img: "/images/marketing/marketing.png",
+                icons: [
+                    "/images/marketing/icon-1.svg",
+                    "/images/marketing/icon-2.svg",
+                    "/images/marketing/icon-3.svg",
+                    "/images/marketing/icon-4.svg"
+                ]
+            },
+        },
+        {
+            params: { service: "product-and-technology" },
+            props: {
+                title: "Product and Technology",
+                description: "Unlock the full potential of your products and solutions with our tailored Product and Technology Advisory services. We combine deep technical insights with market expertise to help you craft innovative product strategies that drive growth in Europe’s dynamic IT landscape.Whether you're seeking to refine your technology roadmap or reimagine your product portfolio, we are here to guide you every step of the way.",
+                expertise: [
+                    "Define product requirements and validate product market fit.",
+                    "Understand and implement product adaption requirements, e.g. localization and GDPR compliance.",
+                    "Optimize maintenance and your technical support delivery to fit market needs.",
+                    "Design your product roadmap for successful European expansion."
+                ],
+                img: "/images/product/product-tech.png",
+                icons: [
+                    "/images/product/icon-1.svg",
+                    "/images/product/icon-2.svg",
+                    "/images/product/icon-3.svg",
+                    "/images/product/icon-4.svg"
+                ]
+            },
+        },
+        {
+            params: { service: "legal-and-regulatory" },
+            props: {
+                title: "Legal and Regulatory",                   
+                description: "Our legal partnerships help you to stay ahead of regulatory challenges and ensure compliance with European rules and regulations. We assist with legal entity establishment, offer advice on the best-fit tax consultancy as well as European labor laws. Our expertise in commercial contract management ensures you receive guidance on terms and conditions, licensing agreements and drafting contracts.",
+                expertise: [
+                    "Design local employment contracts.",
+                    "Establish local legal entities and understand your options.",
+                    "Identify best-fit tax consultancy.",
+                    "Optimize and derisk customer contracts and partnership agreements."
+                ],
+                img: "/images/marketing/marketing.png",
+                icons: [
+                    "/images/legal/icon-1.svg",
+                    "/images/legal/icon-2.svg",
+                    "/images/legal/icon-3.svg",
+                    "/images/legal/icon-4.svg"
+                ]
+            },
+        },
+        {
+            params: { service: "recruiting-and-talent" },
+            props: {
+                title: "Recruiting and Talent",
+                description: "Build high-performing teams with the right talent acquisition approach for the European markets. We help you to tap the right talent pools and define market-specific job skills and profiles.We identify optimal compensation models tailored to job functions and provide expert guidance on salary levels, benefits, and total employment costs. We proactively support you in attracting top talent.",
+                expertise: [
+                    "Define market-specific job skills and profiles.",
+                    "Identify optimal local compensation models by job function.",
+                    "Receive guidance on salary levels, benefits and total cost of employment.",
+                    "Coordinate local hiring efforts and leverage best talent acquisition practices."
+                ],
+                img: "/images/marketing/marketing.png",
+                icons: [
+                    "/images/recruiting/icon-1.svg",
+                    "/images/recruiting/icon-2.svg",
+                    "/images/recruiting/icon-3.svg",
+                    "/images/recruiting/icon-4.svg"
+                ]
+            },
+        },
+    ];
+}
+const { service } = Astro.params;
+const { title, description, expertise, img, icons } = Astro.props;
+---
+
+<Layout title=`${title} - GoEurope`>
+<Services
+  title={title}
+  description={description}
+  expertise={expertise}
+  img={img}
+  icons={icons}
+/>
+
+</Layout>

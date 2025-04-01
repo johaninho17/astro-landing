@@ -3,21 +3,36 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Welcome to Astro - Planetario template.">
+    
+    <div>
+        <div id="background" class="relative isolate w-full">
+            <!-- Image -->
+            <img
+                src="images/view-dresden-germany.png"
+                alt="Meeting"
+                class="w-full h-auto object-cover"
+            />
+            <!-- Text Overlay -->
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center px-6">
+                    <h1
+                        class="text-4xl font-bold tracking-tight text-white sm:text-6xl"
+                    >
+                        Contact Us
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="relative isolate">
-
-        <div class="absolute inset-x-0 top-1/2 -z-10 flex -translate-y-1/2 transform-gpu justify-center overflow-hidden blur-3xl sm:bottom-0 sm:right-[calc(50%-6rem)] sm:top-auto sm:translate-y-0 sm:transform-gpu sm:justify-end"
-             aria-hidden="true">
-            <div class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-25"
-                 style="clip-path: polygon(73.6% 48.6%, 91.7% 88.5%, 100% 53.9%, 97.4% 18.1%, 92.5% 15.4%, 75.7% 36.3%, 55.3% 52.8%, 46.5% 50.9%, 45% 37.4%, 50.3% 13.1%, 21.3% 36.2%, 0.1% 0.1%, 5.4% 49.1%, 21.4% 36.4%, 58.9% 100%, 73.6% 48.6%)"></div>
-        </div>
-        
+    
         <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-            <div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
+            <div class="relative px-6 pb-20 pt-16">
                 <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
     
-                    <h2 class="text-3xl tracking-tight text-black font-nunito-sans">Have questions? </h2>
-                    <h2 class="text-3xl tracking-tight text-black font-nunito-sans">
+                    <h2 class="text-5xl tracking-tight text-bold font-nunito-sans">Have questions? </h2>
+                    <h2 class="text-5xl tracking-tight text-bold font-nunito-sans">
                         Send us a message
                     </h2>
     
@@ -26,22 +41,20 @@ import Layout from '../layouts/Layout.astro';
                     </p>
     
                     <div class="mx-auto mt-6 max-w-lg space-y-4">
-                        <h2 class="text-xl tracking-tight text-black font-nunito-sans">
+                        <h2 class="text-2xl tracking-tight text-bold font-nunito-sans">
                             Contact Information
                         </h2>
                         <div class="flex gap-x-6">
-                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-black">
-                                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                     stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/>
+                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
+                                <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                    <image href="images/svg/email.svg" width="24" height="24" />
                                 </svg>
                             </div>
                             <div>
                                 <h3 class="text-base font-semibold leading-7 text-black font-nunito-sans">
                                     Email
                                 </h3>
-                                <p class="mt-2 leading-7 text-gray-600 font-nunito">
+                                <p class="mt-2 leading-7 text-[#1B4671] font-nunito">
                                     Team@goeuropeconsulting.com
                                 </p>
                                 <!-- <p class="mt-4">
@@ -100,7 +113,7 @@ import Layout from '../layouts/Layout.astro';
     
                 </div>
             </div>
-            <form action="" method="post" class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48">
+            <form action="" method="post" class="px-6 pt-16">
                 <input type="hidden" name="csrfmiddlewaretoken"
                        value="Z0bmepYoKOgOHKPQgiZx3LOBVCVLKhetntCGueWINfWsoskZOsUYYa2sCelk4Wz1">
                 <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
@@ -174,20 +187,14 @@ import Layout from '../layouts/Layout.astro';
                     </div>
     
     
-                    <div class="mt-8 flex justify-end">
+                    <div class="mt-8 flex justify-center maw-w-max">
                         <button type="submit"
-                                class="rounded-md border border-black bg-black px-3.5 py-2.5 text-center text-sm font-nunito text-white shadow-sm hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+                                class="rounded-md maw-w-fit border bg-[#B6CB23] px-48 py-3.5 text-center text-base font-nunito text-[#1B4671] shadow-sm hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
                             Send message
                         </button>
                     </div>
                 </div>
             </form>
-        </div>
-    
-        <div class="absolute left-1/2 right-0 top-full -z-10 hidden -translate-y-1/2 transform-gpu overflow-hidden blur-3xl sm:block"
-             aria-hidden="true">
-            <div class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
-                 style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
         </div>
     
     </div>
