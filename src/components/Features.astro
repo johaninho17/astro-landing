@@ -1,101 +1,225 @@
 ---
-interface Props {
-}
+interface Props {}
 
 const {} = Astro.props;
 ---
 
 <div class="mx-auto mt-12 max-w-7xl px-6 sm:mt-32 lg:px-8">
     <div class="mx-auto max-w-2xl lg:text-center">
-        <!-- <h2 class="text-base font-semibold leading-7">
-            <span class=" text-white px-4 py-1 rounded-full">Faster communication</span>
-        </h2> -->
-        <h2 class="mt-2 text-3xl font-Bold tracking-tight text-gray-900 sm:text-4xl">
+        <h2
+            class="mt-2 text-4xl font-black tracking-tight text-gray-900 sm:text-4xl"
+        >
             What we can do for you
         </h2>
-        <!-- <p class="mt-6 text-lg leading-8 font-nunito text-gray-600">
-            Quis tellus eget adipiscing convallis sit sit eget aliquet
-            quis. Suspendisse eget egestas a elementum pulvinar et feugiat blandit at. In mi viverra elit nunc.
-        </p> -->
     </div>
     <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16">
-            <div class="relative pl-16 bg-[#F2F5F7] rounded-1xl group">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg">
-                        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                            <image href="images/svg/assessment.svg" width="24" height="24" />
-                        </svg>
-                    </div>
-                    Assessment & Planning
-                </dt>
+        <dl
+            class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16"
+        >
+            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
+                <div class="p-6 flex flex-col">
+                    <img
+                        src="images/svg/assessment.svg"
+                        alt="Assessment and Planning"
+                        class="w-20 h-20 mb-10 feature-image"
+                    />
+                    <p class="text-xl font-bold feature-text">Assessment and Planning</p>
+                </div>
                 <!-- Learn More Button -->
-                <div class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <a href="#" class="bg-[#B6CB23] text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-green-600 transition duration-300">
-                        Learn More
+                <div
+                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                    <a
+                        href="/services/assessment-and-planning"
+                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
+                    >
+                        Learn More <span aria-hidden="true">
+                            <img
+                                src="images/svg/arrow_outward.svg"
+                                alt="Arrow"
+                                class="inline-block w-4 h-4"
+                            />
+                        </span>
                     </a>
                 </div>
             </div>
-            <div class="relative pl-16 bg-[#F2F5F7] rounded-1xl">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg ">
-                        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor"
-                             aria-hidden="true">
-                             <image href="images/svg/product.svg" width="24" height="24" />
-                        </svg>
-                    </div>
-                    Product and Technology Advisory
-                </dt>
+
+            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
+                <div class="p-6 flex flex-col">
+                    <img
+                        src="images/svg/product.svg"
+                        alt="Product and Technology Advisory"
+                        class="w-20 h-20 mb-10 feature-image"
+                    />
+                    <p class="text-xl font-bold feature-text">
+                        Product and Technology Advisory
+                    </p>
+                </div>
+                <!-- Learn More Button -->
+                <div
+                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                    <a
+                        href="/services/product-and-technology"
+                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
+                    >
+                        Learn More <span aria-hidden="true">
+                            <img
+                                src="images/svg/arrow_outward.svg"
+                                alt="Arrow"
+                                class="inline-block w-4 h-4"
+                            />
+                        </span>
+                    </a>
+                </div>
             </div>
-            <div class="relative pl-16 bg-[#F2F5F7] rounded-1xl">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg ">
-                        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor"
-                             aria-hidden="true">
-                             <image href="images/svg/sales.svg" width="24" height="24" />
-                        </svg>
-                    </div>
-                    Sales & Go-to-Market
-                </dt>
+
+            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
+                <div class="p-6 flex flex-col">
+                    <img
+                        src="images/svg/sales.svg"
+                        alt="Sales and Go-to-Market"
+                        class="w-20 h-20 mb-10 feature-image"
+                    />
+                    <p class="text-xl font-bold feature-text">Sales and Go-to-Market</p>
+                </div>
+                <!-- Learn More Button -->
+                <div
+                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                    <a
+                        href="/services/sales-go-to-market"
+                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
+                    >
+                        Learn More <span aria-hidden="true">
+                            <img
+                                src="images/svg/arrow_outward.svg"
+                                alt="Arrow"
+                                class="inline-block w-4 h-4"
+                            />
+                        </span>
+                    </a>
+                </div>
             </div>
-            <div class="relative pl-16 bg-[#F2F5F7] rounded-1xl">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg ">
-                        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor"
-                             aria-hidden="true">
-                             <image href="images/svg/marketing.svg" width="24" height="24" />
-                        </svg>
-                    </div>
-                    Marketing and Pipeline Building
-                </dt>
+
+            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
+                <div class="p-6 flex flex-col">
+                    <img
+                        src="images/svg/marketing.svg"
+                        alt="Marketing and Pipeline Building"
+                        class="w-20 h-20 mb-10 feature-image"
+                    />
+                    <p class="text-xl font-bold feature-text">
+                        Marketing and Pipeline Building
+                    </p>
+                </div>
+                <!-- Learn More Button -->
+                <div
+                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                    <a
+                        href="/services/marketing-and-pipeline"
+                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
+                    >
+                        Learn More <span aria-hidden="true">
+                            <img
+                                src="images/svg/arrow_outward.svg"
+                                alt="Arrow"
+                                class="inline-block w-4 h-4"
+                            />
+                        </span>
+                    </a>
+                </div>
             </div>
-            <div class="relative pl-16 bg-[#F2F5F7] rounded-1xl">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg ">
-                        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor"
-                             aria-hidden="true">
-                             <image href="images/svg/recruit.svg" width="24" height="24" />
-                        </svg>
-                    </div>
-                    Recruiting and Talent Acquisition
-                </dt>
+
+            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
+                <div class="p-6 flex flex-col">
+                    <img
+                        src="images/svg/recruit.svg"
+                        alt="Recruiting and Talent Acquisition"
+                        class="w-20 h-20 mb-10 feature-image"
+                    />
+                    <p class="text-xl font-bold feature-text">
+                        Recruiting and Talent Acquisition
+                    </p>
+                </div>
+                <!-- Learn More Button -->
+                <div
+                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                    <a
+                        href="/services/recruiting-and-talent"
+                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
+                    >
+                        Learn More <span aria-hidden="true">
+                            <img
+                                src="images/svg/arrow_outward.svg"
+                                alt="Arrow"
+                                class="inline-block w-4 h-4"
+                            />
+                        </span>
+                    </a>
+                </div>
             </div>
-            <div class="relative pl-16 bg-[#F2F5F7] rounded-1xl">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg">
-                        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor"
-                             aria-hidden="true">
-                             <image href="images/svg/legal.svg" width="24" height="24" />
-                        </svg>
-                    </div>
-                    Legal & Regulatory Navigation
-                </dt>
+
+            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
+                <div class="p-6 flex flex-col">
+                    <img
+                        src="images/svg/legal.svg"
+                        alt="Legal & Regulatory Navigation"
+                        class="w-20 h-20 mb-10 feature-image"
+                    />
+                    <p class="text-xl font-bold feature-text">
+                        Legal & Regulatory Navigation
+                    </p>
+                </div>
+                <!-- Learn More Button -->
+                <div
+                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                    <a
+                        href="/services/legal-and-regulatory"
+                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
+                    >
+                        Learn More <span aria-hidden="true">
+                            <img
+                                src="images/svg/arrow_outward.svg"
+                                alt="Arrow"
+                                class="inline-block w-4 h-4"
+                            />
+                        </span>
+                    </a>
+                </div>
             </div>
         </dl>
     </div>
 </div>
+
+<script>
+    // Select all feature items
+    const featureItems = document.querySelectorAll(".feature-item");
+
+    featureItems.forEach((item) => {
+        const imageContainer = item.querySelector(".feature-image");
+        const text = item.querySelector(".feature-text");
+        const learnMoreButton = item.querySelector(".learn-more-btn");
+
+        // Add hover event listeners
+        item.addEventListener("mouseenter", () => {
+            // Hide the image container
+            imageContainer.style.display = "none";
+            // Make the button relative
+            learnMoreButton.style.position = "relative";
+
+            // Align the text
+            text.style.marginTop = "auto";
+        });
+
+        item.addEventListener("mouseleave", () => {
+            // Show the image container
+            imageContainer.style.display = "flex";
+            // Revert the button to its original state
+            learnMoreButton.style.position = "static";
+        });
+    });
+</script>

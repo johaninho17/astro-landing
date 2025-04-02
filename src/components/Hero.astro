@@ -4,13 +4,13 @@ interface Props {}
 const {} = Astro.props;
 ---
 
-<div class="relative isolate overflow-hidden">
+<div class="relative isolate overflow-hidden h-[400px] sm:h-[500px] lg:h-[600px]">
     <!-- Image -->
             <img
                 id="background-image"
                 src="images/paris.png"
                 alt="Background"
-                class="w-full h-auto object-cover transition-opacity duration-1000 ease-in-out"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
             />
 
         <!-- Overlay -->
@@ -45,6 +45,7 @@ const {} = Astro.props;
             "images/stockholm.png",
             "images/brussels.png",
             "images/amsterdam.png",
+            "images/rome.png",
             // Add more images as needed
         ];
         let currentIndex = 0;
