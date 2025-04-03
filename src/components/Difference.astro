@@ -1,35 +1,60 @@
 ---
-interface Props {
+interface DifferencePoint {
+  text: string;
 }
 
-const {} = Astro.props;
+const differencePoints: DifferencePoint[] = [
+  { text: "We have firsthand experience in Europe, North America, and Asia." },
+  { text: "Our services are end-to-end: we support the implementation of your plans." },
+  { text: "We leverage our strong relationships with end users and partners." },
+  { text: "We follow a data-driven approach." },
+  { text: "We help you build performance-driven local teams." },
+];
 ---
 
-<div class="mx-auto mt-12 max-w-7xl px-6 sm:mt-32 lg:px-8">
-    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-            <div class="relative pl-16">
-                <div class="mx-auto max-w-2xl">
-                    <h2 class="mt-2 text-3xl font-roboto font-Bold tracking-tight text-gray-900 sm:text-3xl">
-                        What Makes Us Different
-                    </h2>
-                </div>
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <ul style="list-style-type: square">
-                        <li>We have firsthand experience in Europe, North America, and Asia.</li>
-                        <li>HOur services are end-to-end: we support the implementation of your plans</li>
-                        <li>We leverage our strong relationships with end users and partners.</li>
-                        <li>We follow a data-driven approach </li>
-                        <li>We help you build performance driven local teams.</li>
-                    </ul>
-                </dt>
-            </div>
-            <div class="relative">
-                <div class="absolute inset-0 bg-bluehue opacity-50 mix-blend-multiply rounded-2xl"></div>
-                    <div class="items-center justify-center rounded-2xl">
-                        <img class="" src="images/chess.png" alt="">
-                    </div>                    
-            </div>
-        </dl>
-    </div>
+<div class="mx-auto mt-16 max-w-7xl px-6 sm:mt-32 lg:px-8">
+  <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+    <dl class="grid grid-cols-1 gap-x-16 gap-y-16 lg:mx-auto lg:grid-cols-2">
+      <div class="relative">
+        <div class="mx-auto max-w-5xl">
+          <h2 class="py-4 text-3xl font-bold text-gray-900">
+            What Makes Us Different
+          </h2>
+        </div>
+        <dt class="text-base font-semibold leading-7 text-gray-900">
+          <ul class="space-y-4">
+            {differencePoints.map((point) => (
+              <li class="flex items-start">
+                <span class="mr-4 flex-shrink-0">
+                  <img src="images/check_circle_green.png" alt="Check" class="w-6 h-6" />
+                </span>
+                <p class="text-gray-900">{point.text}</p>
+              </li>
+            ))}
+          </ul>
+        </dt>
+      </div>
+      <div class="relative">
+        <div class="absolute inset-0 bg-bluehue opacity-50 mix-blend-multiply rounded-2xl"></div>
+        <div class="items-center justify-center rounded-2xl">
+          <img
+            class="relative inset-0 h-full w-full object-cover rounded-2xl"
+            src="images/chess.png"
+            alt="Chess"
+          />
+        </div>
+      </div>
+    </dl>
+    <div class="my-16 lg:justify-center text-center">
+        <button
+          class="bg-[#B6CB23] hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg"
+        >
+          <a
+            href="/contact"
+            class="text-sm font-roboto leading-6 text-[#1B4671]"
+            >Contact Us <span aria-hidden="true">&rarr;</span></a
+          >
+        </button>
+      </div>
+  </div>
 </div>

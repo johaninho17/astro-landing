@@ -1,0 +1,83 @@
+---
+interface ListItem {
+  text: string;
+}
+
+const leftList: ListItem[] = [
+  { text: "Item 1" },
+  { text: "Item 2" },
+  { text: "Item 3" },
+  { text: "Item 4" },
+  { text: "Item 5" },
+];
+
+const rightList: ListItem[] = [
+  { text: "Item A" },
+  { text: "Item B" },
+  { text: "Item C" },
+  { text: "Item D" },
+  { text: "Item E" },
+];
+---
+
+<div class="mx-auto max-w-7xl px-6 sm:mt-32 lg:px-8">
+    <div class="mx-auto my-16 max-w-3xl lg:text-center">
+        <h2 class="text-4xl font-bold font-stretch-extra-expanded text-gray-900">
+            European Market Opportunity at a Glance
+        </h2>
+      </div>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+    <!-- Left List -->
+    <div class="space-y-4">
+      <ul class="text-gray-900">
+        <li>
+            3rd largest economy globally after the USA and China
+        </li>
+        <li>
+            745M people in Europe 448M in the EU
+        </li>
+        <li>
+            Top 5 EU Countries 
+68% of the EU’s
+$15.2T GDP
+        </li>
+        <li>
+            Top 6 economies: Germany, UK, France, Italy, Spain, Netherlands
+        </li>
+        <li>
+            ~ 30%  of Global Fortune 500 companies
+        </li>
+      </ul>
+    </div>
+
+    <!-- Center Image -->
+    <div class="flex justify-center">
+      <img
+        src="images/europe-map.png"
+        alt="Map"
+        class="w-full max-w-sm h-auto object-cover rounded-lg"
+      />
+    </div>
+
+    <!-- Right List -->
+    <div class="space-y-4">
+      <ul class="text-gray-900">
+       <li>
+        IT market projected to be at $1.3T by 2025, 23% of the global IT market.
+       </li>
+       <li>
+        IT spending  expected to grow 8.7% in  2025
+       </li>
+       <li>
+        Software spending projected to grow 13% to reach $288B in 2025
+       </li>
+       <li>
+        IT Services spending related to AI projected to grow 21% in 2025
+       </li>
+       <li>
+        ~ 10M  ICT specialists  in the EU alone, growing constantly
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

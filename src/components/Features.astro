@@ -1,199 +1,103 @@
 ---
-interface Props {}
+interface Feature {
+  title: string;
+  image: string;
+  link: string;
+}
 
-const {} = Astro.props;
+const features: Feature[] = [
+  {
+    title: "Assessment and Planning",
+    image: "images/svg/assessment.svg",
+    link: "/services/assessment-and-planning",
+  },
+  {
+    title: "Product and Technology Advisory",
+    image: "images/svg/product.svg",
+    link: "/services/product-and-technology",
+  },
+  {
+    title: "Sales and Go-to-Market",
+    image: "images/svg/sales.svg",
+    link: "/services/sales-go-to-market",
+  },
+  {
+    title: "Marketing and Pipeline Building",
+    image: "images/svg/marketing.svg",
+    link: "/services/marketing-and-pipeline",
+  },
+  {
+    title: "Recruiting and Talent Acquisition",
+    image: "images/svg/recruit.svg",
+    link: "/services/recruiting-and-talent",
+  },
+  {
+    title: "Legal & Regulatory Navigation",
+    image: "images/svg/legal.svg",
+    link: "/services/legal-and-regulatory",
+  },
+];
 ---
 
-<div class="mx-auto mt-12 max-w-7xl px-6 sm:mt-32 lg:px-8">
-    <div class="mx-auto max-w-2xl lg:text-center">
-        <h2
-            class="mt-2 text-4xl font-black tracking-tight text-gray-900 sm:text-4xl"
+<div class="mx-auto max-w-7xl py-16 px-8">
+  <div class="mx-auto mt-16 max-w-7xl lg:text-center">
+    <h2
+      class="mt-16 text-4xl font-black font-stretch-extra-expanded text-gray-900"
+    >
+      What we can do for you
+    </h2>
+  </div>
+  <div class="mx-auto mt-16 lg:max-w-5xl">
+    <dl
+      class="grid max-w-none grid-cols-3 gap-x-8 gap-y-16 max-w-none"
+    >
+      {features.map((feature) => (
+        <div
+          class="relative bg-[#F2F5F7] rounded-xl group feature-item hover:bg-[#1B4671] transition-colors duration-300"
         >
-            What we can do for you
-        </h2>
-    </div>
-    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-        <dl
-            class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16"
-        >
-            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
-                <div class="p-6 flex flex-col">
-                    <img
-                        src="images/svg/assessment.svg"
-                        alt="Assessment and Planning"
-                        class="w-20 h-20 mb-10 feature-image"
-                    />
-                    <p class="text-xl font-bold feature-text">Assessment and Planning</p>
-                </div>
-                <!-- Learn More Button -->
-                <div
-                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                    <a
-                        href="/services/assessment-and-planning"
-                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
-                    >
-                        Learn More <span aria-hidden="true">
-                            <img
-                                src="images/svg/arrow_outward.svg"
-                                alt="Arrow"
-                                class="inline-block w-4 h-4"
-                            />
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
-                <div class="p-6 flex flex-col">
-                    <img
-                        src="images/svg/product.svg"
-                        alt="Product and Technology Advisory"
-                        class="w-20 h-20 mb-10 feature-image"
-                    />
-                    <p class="text-xl font-bold feature-text">
-                        Product and Technology Advisory
-                    </p>
-                </div>
-                <!-- Learn More Button -->
-                <div
-                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                    <a
-                        href="/services/product-and-technology"
-                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
-                    >
-                        Learn More <span aria-hidden="true">
-                            <img
-                                src="images/svg/arrow_outward.svg"
-                                alt="Arrow"
-                                class="inline-block w-4 h-4"
-                            />
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
-                <div class="p-6 flex flex-col">
-                    <img
-                        src="images/svg/sales.svg"
-                        alt="Sales and Go-to-Market"
-                        class="w-20 h-20 mb-10 feature-image"
-                    />
-                    <p class="text-xl font-bold feature-text">Sales and Go-to-Market</p>
-                </div>
-                <!-- Learn More Button -->
-                <div
-                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                    <a
-                        href="/services/sales-go-to-market"
-                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
-                    >
-                        Learn More <span aria-hidden="true">
-                            <img
-                                src="images/svg/arrow_outward.svg"
-                                alt="Arrow"
-                                class="inline-block w-4 h-4"
-                            />
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
-                <div class="p-6 flex flex-col">
-                    <img
-                        src="images/svg/marketing.svg"
-                        alt="Marketing and Pipeline Building"
-                        class="w-20 h-20 mb-10 feature-image"
-                    />
-                    <p class="text-xl font-bold feature-text">
-                        Marketing and Pipeline Building
-                    </p>
-                </div>
-                <!-- Learn More Button -->
-                <div
-                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                    <a
-                        href="/services/marketing-and-pipeline"
-                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
-                    >
-                        Learn More <span aria-hidden="true">
-                            <img
-                                src="images/svg/arrow_outward.svg"
-                                alt="Arrow"
-                                class="inline-block w-4 h-4"
-                            />
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
-                <div class="p-6 flex flex-col">
-                    <img
-                        src="images/svg/recruit.svg"
-                        alt="Recruiting and Talent Acquisition"
-                        class="w-20 h-20 mb-10 feature-image"
-                    />
-                    <p class="text-xl font-bold feature-text">
-                        Recruiting and Talent Acquisition
-                    </p>
-                </div>
-                <!-- Learn More Button -->
-                <div
-                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                    <a
-                        href="/services/recruiting-and-talent"
-                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
-                    >
-                        Learn More <span aria-hidden="true">
-                            <img
-                                src="images/svg/arrow_outward.svg"
-                                alt="Arrow"
-                                class="inline-block w-4 h-4"
-                            />
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative bg-[#F2F5F7] rounded-2xl group feature-item">
-                <div class="p-6 flex flex-col">
-                    <img
-                        src="images/svg/legal.svg"
-                        alt="Legal & Regulatory Navigation"
-                        class="w-20 h-20 mb-10 feature-image"
-                    />
-                    <p class="text-xl font-bold feature-text">
-                        Legal & Regulatory Navigation
-                    </p>
-                </div>
-                <!-- Learn More Button -->
-                <div
-                    class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                    <a
-                        href="/services/legal-and-regulatory"
-                        class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
-                    >
-                        Learn More <span aria-hidden="true">
-                            <img
-                                src="images/svg/arrow_outward.svg"
-                                alt="Arrow"
-                                class="inline-block w-4 h-4"
-                            />
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </dl>
-    </div>
+          <div class="p-6 flex flex-col">
+            <img
+              src={feature.image}
+              alt={feature.title}
+              class="w-20 h-20 mb-10 feature-image"
+            />
+            <p class="text-xl font-bold feature-text group-hover:text-white force-break">
+              {feature.title}
+            </p>
+          </div>
+          <!-- Learn More Button -->
+          <div
+            class="absolute bottom-6 left-0 right-0 flex ml-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <a
+              href={feature.link}
+              class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
+            >
+              Learn More <span aria-hidden="true">
+                <img
+                  src="images/svg/arrow_outward.svg"
+                  alt="Arrow"
+                  class="inline-block w-4 h-4"
+                />
+              </span>
+            </a>
+          </div>
+        </div>
+      ))}
+    </dl>
+  </div>
 </div>
+
+<style>
+  /* Force text to break into a second line */
+  .force-break {
+    display: inline-block; /* Ensures the text respects the width */
+    max-width: 250px; /* Adjust this value to control where the break happens */
+    white-space: normal; /* Allows wrapping */
+    word-break: break-word; /* Breaks long words if necessary */
+    overflow-wrap: break-word; /* Ensures wrapping for long words */
+  }
+</style>
 
 <script>
     // Select all feature items
@@ -210,9 +114,10 @@ const {} = Astro.props;
             imageContainer.style.display = "none";
             // Make the button relative
             learnMoreButton.style.position = "relative";
+            // // Align the text
+            text.style.currentColor = "white";
 
-            // Align the text
-            text.style.marginTop = "auto";
+            featureItems.style.backgroundColor = "#1B4671";
         });
 
         item.addEventListener("mouseleave", () => {

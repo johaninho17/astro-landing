@@ -6,18 +6,17 @@ const {} = Astro.props;
 
 <footer
     aria-labelledby="footer-heading"
-    class="relative border-t border-gray-900/10 py-24 sm:py-32 bg-black text-white"
+    class="relative border-t border-gray-900/10 py-24 bg-black text-white"
 >
-    <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div id="full" class="xl:grid xl:grid-cols-4 xl:gap-8">
+    <div id="full" class="grid grid-cols-4 gap-8">
         <!-- Centered Image -->
         <div class="col-span-2 flex justify-center items-start">
             <a href="/" class="-m-1.5 p-1.5">
             <img class="h-auto max-w-full" src="/images/goeuropelogo.png" alt="Company name" />
             </a>
         </div>
-                <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            <div id='list' class="md:grid md:grid-cols-2 md:gap-8 justify-center">
+                <div class="grid grid-cols-2 gap-8 col-span-2">
+            <div id='list' class="grid grid-cols-2 gap-8 justify-center">
                 <div>
                     <h3 class="text-2xl font-semibold leading-6 text-white-500">
                         Menu
@@ -71,47 +70,19 @@ const {} = Astro.props;
                         </li>
                     </ul>
                 </div>
-                <div class="mt-10 md:mt-0 ">
+                <div class="maw-w-2xl">
                     <h3 class="text-2xl font-semibold leading-6 text-white-500">
                         Contact Us
                     </h3>
                     <ul role="list" class="mt-6 space-y-4">
                         <li>
                             <div class="mt-8">
-                                <a href="/contact" class="bg-[#B6CB23] text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-green-600 transition duration-300">Contact Us <span aria-hidden="true">&rarr;</span></a>
+                                <a href="/contact" class="bg-[#B6CB23] text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-green-600 transition duration-300">Contact Us <span aria-hidden="true">&rarr;</span></a>
                               </div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <!-- <div class="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                    <h3 class="text-l font-semibold leading-6 text-gray-500">Company</h3>
-                    <ul role="list" class="mt-6 space-y-4">
-                        <li>
-                            <a href="#" class="text-l leading-6 text-white hover:text-gray-500">About</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-l leading-6 text-white hover:text-gray-500">Blog</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-l leading-6 text-white hover:text-gray-500">Jobs</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mt-10 md:mt-0">
-                    <h3 class="text-l font-semibold leading-6 text-gray-500">Legal</h3>
-                    <ul role="list" class="mt-6 space-y-4">
-                        <li>
-                            <a href="#" class="text-l leading-6 text-white hover:text-gray-500">Privacy</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-l leading-6 text-white hover:text-gray-500">Terms</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div> -->
         </div>
     </div>
 </footer>

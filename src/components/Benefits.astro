@@ -3,71 +3,121 @@ interface Props {
 }
 
 const {} = Astro.props;
+
+interface Benefit {
+  title: string;
+  description: string;
+  additionalText?: string;
+}
+
+interface Opportunity {
+  text: string;
+}
+
+const benefits: Benefit[] = [
+  {
+    title: "Robust growing IT Market driven by digital transformation.",
+    description: "IT spending expected to grow 9% in 2025",
+  },
+  {
+    title: "Large pool of very skilled workforce.",
+    description: "Large pool of very skilled workforce.",
+  },
+  {
+    title: "Significant number of global brands.",
+    description: "25% of Top 100 global brands",
+  },
+  {
+    title: "Borderless market of 27 EU countries.",
+    description:
+      "EU GDP representing one-sixth of global economy and 14% of world’s trade",
+  },
+  {
+    title: "EU GDP representing one-sixth of global economy and 14% of world’s trade.",
+    description: "UK, Switzerland, Denmark",
+  },
+];
+
+const opportunities: Opportunity[] = [
+  { text: "Capitalize on significant growth potential." },
+  { text: "Hedge against turndowns in your home market." },
+  { text: "Better position your company to sell to global accounts." },
+  { text: "Improve regional market penetration with a European team." },
+  { text: "Elevate your brand onto the global stage." },
+  { text: "Access an international talent pool." },
+];
 ---
 
 <div class="mx-auto mt-12 max-w-7xl px-6 sm:mt-32 lg:px-8">
-    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-            <div class="relative pl-16">
+    <div id="benefits" class="mx-auto mt-16 sm:mt-20 lg:mt-24 lg:max-w-5xl">
+        <dl class="grid max-w-xl grid-cols-1 gap-x-16 gap-y-16 lg:max-w-none lg:grid-cols-2">
+            <div class="relative">
                 <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 relative bg-white shadow-2xl text-center">
+                    <div class="rounded-xl p-8 ring-1 ring-gray-900/10 sm:p-10 relative bg-[#F2F5F7] text-center">
                     add logos
-                </div>
-                    
+                    </div>
                 </dt>
             </div>
-            <div class="relative pl-16">
-                <div class="mx-auto max-w-2xl">
-                    <h2 class="mt-2 text-3xl font-roboto font-Bold tracking-tight text-gray-900 sm:text-3xl">
+            <div class="relative">
+                <div class="mx-auto">
+                    <h2 class="mb-4 text-3xl font-black font-stretch-extra-expanded text-gray-900">
                         European Market Benefits
                     </h2>
                 </div>
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <ul style="list-style-type: square">
-                        <li>Robust growing IT Market driven by digital transformation.</li>
-                        <p class="text-green-400 text-xs">IT spending expected to grow 9% in 2025</p>
-                        <li>Large pool of very skilled workforce.</li>
-                        <p class="text-green-400 text-xs">Large pool of very skilled workforce.</p>
-                        <li>Significant number of global brands.</li>
-                        <p class="text-green-400 text-xs">25% of Top 100 global brands</p>
-                        <li>Borderless market of 27 EU countries.</li>
-                        <p class="text-green-400 text-xs">EU GDP representing one-sixth of global economy and 14% of world’s trade</p>
-                        <li>EU GDP representing one-sixth of global economy and 14% of world’s trade</li>
-                        <p class="text-green-400 text-xs">UK, Switzerland, Denmark</p>
-                    </ul>
+                <dt class="font-bold leading-7 text-gray-900">
+                    <div class="space-y-4">
+                        {benefits.map((benefit) => (
+                            <div class="flex items-start">
+                              <span class="mr-4 flex-shrink-0">
+                                <img src="images/check_circle.png" alt="Check" class="w-6 h-6" />
+                              </span>
+                              <p class="text-gray-900 text-lg">
+                                {benefit.title}
+                                {benefit.description && (
+                                  <span class="block text-[#B6CB23] mt-1 text-sm">{benefit.description}</span>
+                                )}
+                              </p>
+                            </div>
+                          ))}
+                    </div>
                 </dt>
             </div>
         </dl>
     </div>
 
-    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-            <div class="relative pl-16">
-                <div class="mx-auto max-w-2xl">
-                    <h2 class="mt-2 text-3xl font-roboto font-Bold tracking-tight text-gray-900 sm:text-3xl">
-                        Your Company’s Opportunites
+    <div id="opportunities" class="mx-auto mt-16 max-w-5xl sm:mt-20 lg:mt-24">
+        <dl class="grid grid-cols-1 gap-x-16 gap-y-16 lg:mx-auto lg:grid-cols-2">
+            <div class="relative">
+                <div class="mx-auto max-w-5xl">
+                    <h2 class="py-4 text-3xl font-bold text-gray-900">
+                      Your Company’s Opportunities
                     </h2>
-                </div>
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <ul style="list-style-type: square">
-                        <li>Capitalize on significant growth potential.</li>
-                        <li>Hedge against turndowns in your home market.</li>
-                        <li>Better position your company to sell to global accounts.</li>
-                        <li>Improve regional market penetration with a European team.</li>
-                        <li>Elevate your brand onto the global stage.</li>
-                        <li>Access an international talent pool.</li>
+                  </div>
+                  <dt class="text-base font-semibold leading-7 text-gray-900">
+                    <ul class="space-y-4">
+                      {opportunities.map((opportunity) => (
+                        <li class="flex items-start">
+                          <span class="mr-4 flex-shrink-0">
+                            <img src="images/check_circle_green.png" alt="Check" class="w-6 h-6" />
+                          </span>
+                          <p class="text-gray-900">{opportunity.text}</p>
+                        </li>
+                      ))}
                     </ul>
-                </dt>
-            </div>
-            <div class="relative pl-16">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                    <div class="items-center justify-center">
-                        <img class="" src="images/balcony.png" alt="">
-                    </div>
+                  </dt>
                 </div>
-                    
-                </dt>
-            </div>
+                <div class="relative">
+                    <dt>
+                      <div class="relative">
+                        <img
+                          class="relative inset-0 h-full w-full object-cover rounded-2xl"
+                          src="images/balcony.png"
+                          alt="Balcony"
+                        />
+                      </div>
+                    </dt>
+                  </div>
         </dl>
     </div>
 </div>
+
