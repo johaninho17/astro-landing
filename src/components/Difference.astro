@@ -12,21 +12,21 @@ const differencePoints: DifferencePoint[] = [
 ];
 ---
 
-<div class="mx-auto mt-16 max-w-7xl px-6 sm:mt-32 lg:px-8">
-  <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+<div class="mx-auto mt-16 max-w-7xl sm:px-6">
+  <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-6xl">
     <dl class="grid grid-cols-1 gap-x-16 gap-y-16 lg:mx-auto lg:grid-cols-2">
       <div class="relative">
         <div class="mx-auto max-w-5xl">
-          <h2 class="py-4 text-3xl font-bold text-gray-900">
-            What Makes Us Different
+          <h2 class="py-6 text-4xl font-extrabold text-gray-900 leading-20 font-stretch-extra-expanded">
+            What Makes Us <span class="block">Different</span>
           </h2>
         </div>
-        <dt class="text-base font-semibold leading-7 text-gray-900">
-          <ul class="space-y-4">
+        <dt class="text-2xl leading-9 text-semibold text-gray-900">
+          <ul class="space-y-6">
             {differencePoints.map((point) => (
               <li class="flex items-start">
                 <span class="mr-4 flex-shrink-0">
-                  <img src="images/check_circle_green.png" alt="Check" class="w-6 h-6" />
+                  <img src="images/check_circle_green.png" alt="Check" class="w-8 h-8" />
                 </span>
                 <p class="text-gray-900">{point.text}</p>
               </li>
@@ -35,14 +35,11 @@ const differencePoints: DifferencePoint[] = [
         </dt>
       </div>
       <div class="relative">
-        <div class="absolute inset-0 bg-bluehue opacity-50 mix-blend-multiply rounded-2xl"></div>
-        <div class="items-center justify-center rounded-2xl">
           <img
             class="relative inset-0 h-full w-full object-cover rounded-2xl"
-            src="images/chess.png"
+            src="images/blue-chess.png"
             alt="Chess"
           />
-        </div>
       </div>
     </dl>
     <div class="my-16 lg:justify-center text-center">

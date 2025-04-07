@@ -8,38 +8,38 @@ const {} = Astro.props;
     aria-labelledby="footer-heading"
     class="relative border-t border-gray-900/10 py-24 bg-black text-white"
 >
-    <div id="full" class="grid grid-cols-4 gap-8">
-        <!-- Centered Image -->
+    <div id="full" class="grid grid-cols-4 gap-8 max-w-none px-6">
+        <!-- Image -->
         <div class="col-span-2 flex justify-center items-start">
-            <a href="/" class="-m-1.5 p-1.5">
-            <img class="h-auto max-w-full" src="/images/goeuropelogo.png" alt="Company name" />
+            <a href="/" class="">
+            <img class="h-full max-w-full" src="/images/goeuropelogo.png" alt="Company name" />
             </a>
         </div>
                 <div class="grid grid-cols-2 gap-8 col-span-2">
             <div id='list' class="grid grid-cols-2 gap-8 justify-center">
                 <div>
-                    <h3 class="text-2xl font-semibold leading-6 text-white-500">
+                    <h3 class="text-2xl font-medium leading-7 text-white-500">
                         Menu
                     </h3>
                     <ul role="list" class="mt-6 space-y-4">
                         <li>
                             <a
                                 href="/"
-                                class="text-l leading-6 text-white hover:text-gray-500"
+                                class="text-l leading-6 text-gray-300 hover:text-gray-500"
                                 >Home</a
                             >
                         </li>
                         <li>
                             <a
                                 href="/about"
-                                class="text-l leading-6 text-white hover:text-gray-500"
+                                class="text-l leading-6 text-gray-300 hover:text-gray-500"
                                 >About Us</a
                             >
                         </li>
                         <li>
                             <a
                                 href="/contact"
-                                class="text-l leading-6 text-white hover:text-gray-500"
+                                class="text-l leading-6 text-gray-300 hover:text-gray-500"
                             >
                                 Contact Us
                             </a>
@@ -47,7 +47,7 @@ const {} = Astro.props;
                         <li>
                             <a
                                 href="#"
-                                class="text-l leading-6 text-white hover:text-gray-500"
+                                class="text-l leading-6 text-gray-300 hover:text-gray-500"
                             >
                                 Privacy Policy
                             </a>
@@ -55,7 +55,7 @@ const {} = Astro.props;
                         <li>
                             <a
                                 href="#"
-                                class="text-l leading-6 text-white hover:text-gray-500"
+                                class="text-l leading-6 text-gray-300 hover:text-gray-500"
                             >
                                 Imprint
                             </a>
@@ -63,21 +63,21 @@ const {} = Astro.props;
                         <li>
                             <a
                                 href="#"
-                                class="text-l leading-6 text-white hover:text-gray-500"
+                                class="text-l leading-6 text-gray-300 hover:text-gray-500"
                             >
                                 Cookie Banner
                             </a>
                         </li>
                     </ul>
                 </div>
-                <div class="maw-w-2xl">
-                    <h3 class="text-2xl font-semibold leading-6 text-white-500">
+                <div class="maw-w-none whitespace-nowrap">
+                    <h3 class="text-2xl font-medium leading-7 text-white-500">
                         Contact Us
                     </h3>
                     <ul role="list" class="mt-6 space-y-4">
                         <li>
                             <div class="mt-8">
-                                <a href="/contact" class="bg-[#B6CB23] text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-green-600 transition duration-300">Contact Us <span aria-hidden="true">&rarr;</span></a>
+                                <a href="/contact" class="bg-[#B6CB23] text-white px-10 py-4 rounded-md text-base font-normal hover:bg-green-600 transition duration-300 whitespace-nowrap">Contact Us <span aria-hidden="true">&rarr;</span></a>
                               </div>
                         </li>
                     </ul>
@@ -85,4 +85,9 @@ const {} = Astro.props;
             </div>
         </div>
     </div>
+        <!-- Border and Copyright Section -->
+        <hr class="border-gray-700 mt-12 max-w-7xl mx-auto" />
+        <div class="mt-6 text-center text-sm text-gray-300">
+            &copy; Copyright All right reserved
+        </div>
 </footer>

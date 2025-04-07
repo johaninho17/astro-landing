@@ -5,69 +5,114 @@ const {} = Astro.props;
 ---
 
 <div class="relative isolate overflow-hidden h-[400px] sm:h-[500px] lg:h-[600px]">
-    <!-- Image -->
-            <img
-                id="background-image"
-                src="images/paris.png"
-                alt="Background"
-                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
-            />
-
-        <!-- Overlay -->
-        <div class="absolute inset-0">
-            <img
-            id="background-image"
-            src="images/blue-hue.png"
-            alt="Background"
-            class="absolute w-full h-full object-cover"
+    <!-- Image Container -->
+    <div class="absolute inset-0 w-full h-full overflow-hidden">
+        <img
+            id="current-image"
+            src="images/paris.png"
+            alt="Current Background"
+            class="absolute inset-0 w-full h-full object-fill transition-transform duration-1000 ease-in-out"
         />
-            <div class="absolute max-w-2xl mx-48 my-48">
-                <h1
-                    class="font-black tracking-tight text-white sm:text-4xl md:text-6xl"
-                >
-                    Your Partner in Entering the European IT Market
-                </h1>
-                <p class="mt-6 text-lg font-roboto text-white md:line-clamp-2">
-                    <strong
-                        >We advise and assist IT companies in establishing and
-                        expanding their presence in the European Market.</strong
-                    >
-                </p>
-            </div>
-        </div>
+        <img
+            id="next-image"
+            src="images/london.png"
+            alt="Next Background"
+            class="absolute inset-0 w-full h-full object-fill opacity-0 transition-opacity duration-1000 ease-in-out"
+        />
     </div>
 
-    <script client:load>
-        const images = [
-            "images/paris.png",
-            "images/london.png",
-            "images/berlin.png",
-            "images/stockholm.png",
-            "images/brussels.png",
-            "images/amsterdam.png",
-            "images/rome.png",
-            // Add more images as needed
-        ];
-        let currentIndex = 0;
-        const backgroundImageElement =
-            document.getElementById("background-image");
-
-        function changeBackground() {
-            // Add opacity class to make the current image fade out
-            backgroundImageElement.classList.add("opacity-0");
-
-            setTimeout(() => {
-                currentIndex++;
-                if (currentIndex >= images.length) {
-                    currentIndex = 0;
-                }
-                backgroundImageElement.src = images[currentIndex];
-                // Remove the opacity class to make the new image fade in
-                backgroundImageElement.classList.remove("opacity-0");
-            }, 1000); // This time should match the duration of the opacity transition
-        }
-
-        // Starts background transition every 4 seconds (includes 1 second for transition duration)
-        setInterval(changeBackground, 4000);
-    </script>
+    <!-- Overlay -->
+    <div class="absolute inset-0">
+        <img
+            src="images/blue-hue.png"
+            alt="Overlay"
+            class="absolute w-full h-full object-fill"
+        />
+        <div class="absolute max-w-2xl mx-48 my-48">
+            <h1
+                class="font-extrabold text-white sm:text-4xl md:text-6xl"
+            >
+                Your Partner in Entering the European IT Market
+            </h1>
+            <p class="mt-6 lg:text-lg sm:text-sm font-roboto text-white lg:line-clamp-2">
+                <strong
+                    >We advise and assist IT companies in establishing and
+                    expanding their presence in the European Market.</strong
+                >
+            </p>
+        </div>
+    </div>
 </div>
+
+<script client:load>
+    const images = [
+        "images/paris.png",
+        "images/london.png",
+        "images/berlin.png",
+        "images/stockholm.png",
+        "images/brussels.png",
+        "images/amsterdam.png",
+        "images/rome.png",
+    ];
+    let currentIndex = 0;
+    const currentImageElement = document.getElementById("current-image");
+    const nextImageElement = document.getElementById("next-image");
+
+    function changeBackground() {
+        // Set the next image source
+        const nextIndex = (currentIndex + 1) % images.length;
+        nextImageElement.src = images[nextIndex];
+
+        // Add transition classes
+        currentImageElement.classList.add("fade-out");
+        nextImageElement.classList.add("fade-in");
+
+        // Wait for the animation to complete
+        setTimeout(() => {
+            // Swap the images
+            currentImageElement.src = images[nextIndex];
+            currentImageElement.classList.remove("fade-out");
+            nextImageElement.classList.remove("fade-in", "opacity-0");
+
+            // Reset the next image for the next transition
+            nextImageElement.classList.add("opacity-0");
+
+            // Update the current index
+            currentIndex = nextIndex;
+        }, 1000); // Match the duration of the CSS animation
+    }
+
+    // Start the background transition every 10 seconds
+    setInterval(changeBackground, 10000);
+</script>
+
+<style>
+/* Fading animations */
+.fade-out {
+    opacity: 1;
+    animation: fade-out 1s ease-in-out forwards;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fade-in 1s ease-in-out forwards;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+</style>

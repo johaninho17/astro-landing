@@ -1,83 +1,101 @@
----
-interface ListItem {
-  text: string;
-}
-
-const leftList: ListItem[] = [
-  { text: "Item 1" },
-  { text: "Item 2" },
-  { text: "Item 3" },
-  { text: "Item 4" },
-  { text: "Item 5" },
-];
-
-const rightList: ListItem[] = [
-  { text: "Item A" },
-  { text: "Item B" },
-  { text: "Item C" },
-  { text: "Item D" },
-  { text: "Item E" },
-];
----
-
-<div class="mx-auto max-w-7xl px-6 sm:mt-32 lg:px-8">
-    <div class="mx-auto my-16 max-w-3xl lg:text-center">
-        <h2 class="text-4xl font-bold font-stretch-extra-expanded text-gray-900">
+<div class="mx-auto max-w-7xl">
+    <div class="mx-auto my-16 text-center">
+        <h2
+            class="text-4xl font-bold font-stretch-extra-expanded text-gray-900"
+        >
             European Market Opportunity at a Glance
         </h2>
-      </div>
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-    <!-- Left List -->
-    <div class="space-y-4">
-      <ul class="text-gray-900">
-        <li>
-            3rd largest economy globally after the USA and China
-        </li>
-        <li>
-            745M people in Europe 448M in the EU
-        </li>
-        <li>
-            Top 5 EU Countries 
-68% of the EU’s
-$15.2T GDP
-        </li>
-        <li>
-            Top 6 economies: Germany, UK, France, Italy, Spain, Netherlands
-        </li>
-        <li>
-            ~ 30%  of Global Fortune 500 companies
-        </li>
-      </ul>
     </div>
+    <div
+        class="mx-auto grid grid-cols-1 lg:grid-cols-3 items-center text-2xl sm:px-6"
+    >
+        <!-- Left List -->
+        <div class="space-y-6 items-center">
+            <!-- Adjusted gap between list items -->
+            <ul class="text-gray-900">
+                <li class="my-8">
+                    <span class="text-[#B6CB23] text-4xl">3rd</span>
+                    <span class="text-[#B6CB23]">largest economy</span> globally
+                    <span class="block">after the USA and China</span>
+                </li>
+                <li>
+                    <span class="text-[#B6CB23] text-4xl">745M</span> people in Europe
+                    <span class="block"
+                        ><span class="text-[#B6CB23] text-4xl">448M</span> in the
+                        EU</span
+                    >
+                </li>
+                <li class="my-8">
+                    <span class="text-[#B6CB23] text-4xl">Top 5</span>
+                    <span class="text-[#B6CB23]">EU Countries</span>
+                    <span class="block"
+                        ><span class="text-[#B6CB23] text-4xl">68%</span> of the
+                        EU’s</span
+                    >
+                    <span class="text-[#B6CB23] text-4xl">$15.2T</span> GDP
+                </li>
+                <li class="my-8">
+                    <span class="text-[#B6CB23] text-4xl">Top 6 </span><span
+                        class="text-[#B6CB23]">economies:</span
+                    > Germany, <span class="block"
+                        >UK, France, Italy, Spain,</span
+                    >
+                    Netherlands
+                </li>
+                <li class="my-8">
+                    <span class="text-[#B6CB23] text-4xl">~ 30%</span> of <span
+                        class="text-[#B6CB23]"
+                        >Global Fortune <span class="block"></span>500</span
+                    > companies
+                </li>
+            </ul>
+        </div>
 
-    <!-- Center Image -->
-    <div class="flex justify-center">
-      <img
-        src="images/europe-map.png"
-        alt="Map"
-        class="w-full max-w-sm h-auto object-cover rounded-lg"
-      />
-    </div>
+        <!-- Center Image -->
+        <div class="flex justify-center">
+            <img
+                src="images/europe-map.png"
+                alt="Map"
+                class="w-auto h-auto object-fill"
+            />
+        </div>
 
-    <!-- Right List -->
-    <div class="space-y-4">
-      <ul class="text-gray-900">
-       <li>
-        IT market projected to be at $1.3T by 2025, 23% of the global IT market.
-       </li>
-       <li>
-        IT spending  expected to grow 8.7% in  2025
-       </li>
-       <li>
-        Software spending projected to grow 13% to reach $288B in 2025
-       </li>
-       <li>
-        IT Services spending related to AI projected to grow 21% in 2025
-       </li>
-       <li>
-        ~ 10M  ICT specialists  in the EU alone, growing constantly
-        </li>
-      </ul>
+        <!-- Right List -->
+        <div class="space-y-6 items-center">
+            <!-- Adjusted gap between list items -->
+            <ul class="text-gray-900 text-right">
+                <li class="my-8">
+                    <span class="text-[#B6CB23]">IT market</span> projected to be
+                    at <span class="text-[#B6CB23] text-4xl">$1.3T</span>
+                    <span class="block"
+                        >by 2025, <span class="text-[#B6CB23] text-4xl"
+                            >23%</span
+                        > of the
+                        <span class="text-[#B6CB23]">global</span> IT market.</span
+                    >
+                </li>
+                <li class="my-8">
+                    <span class="text-[#B6CB23]">IT spending</span> expected to grow<span
+                        class="block"
+                        ><span class="text-[#B6CB23] text-4xl">8.7%</span> in 2025</span>
+                </li>
+                <li class="my-8">
+                    <span class="text-[#B6CB23]">Software spending</span> projected
+                    to <span class="block"
+                        >grow<span class="text-[#B6CB23] text-4xl"> 13%</span> to
+                        reach <span class="text-[#B6CB23] text-4xl">$288B</span
+                        ></span
+                    >
+                    <span class="block">in 2025</span>
+                </li>
+                <li class="my-8">
+                    <span class="text-[#B6CB23]">IT Services spending</span> related to <span class="block">AI projected to grow <span class="text-[#B6CB23] text-4xl">21%</span> in
+                    2025</span>
+                </li>
+                <li class="my-8">
+                    <span class="text-[#B6CB23] text-4xl">~ 10M </span><span class="text-[#B6CB23]">ICT specialists</span> in the <span class="block">EU alone, growing constantly</span>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
