@@ -4,7 +4,7 @@ interface Props {}
 const {} = Astro.props;
 ---
 
-<div class="relative isolate overflow-hidden h-[400px] sm:h-[500px] lg:h-[600px]">
+<div class="relative isolate overflow-hidden sm:h-[500px] lg:h-[600px]">
     <!-- Image Container -->
     <div class="absolute inset-0 w-full h-full overflow-hidden">
         <img
@@ -28,7 +28,7 @@ const {} = Astro.props;
             alt="Overlay"
             class="absolute w-full h-full object-fill"
         />
-        <div class="absolute max-w-2xl mx-48 my-48">
+        <div class="absolute max-w-2xl mx-48 my-48 sm:mx-32 sm:my-32">
             <h1
                 class="font-extrabold text-white sm:text-4xl md:text-6xl"
             >
@@ -83,7 +83,7 @@ const {} = Astro.props;
     }
 
     // Start the background transition every 10 seconds
-    setInterval(changeBackground, 10000);
+    setInterval(changeBackground, 3000);
 </script>
 
 <style>

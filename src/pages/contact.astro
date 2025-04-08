@@ -85,7 +85,7 @@ import Layout from "../layouts/Layout.astro";
                     </div>
                 </div>
             </div>
-            <form action="" method="post" class="px-6 pt-16">
+            <form id="contactForm" class="px-6 pt-16">
                 <input
                     type="hidden"
                     name="csrfmiddlewaretoken"
@@ -226,6 +226,7 @@ import Layout from "../layouts/Layout.astro";
                     <div class="mt-8 flex justify-center max-w-none">
                         <button
                             type="submit"
+                            id="submitButton"
                             class="rounded-md border bg-[#B6CB23] w-full py-3 text-center text-base font-nunito text-[#1B4671] shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                         >
                             Send message
@@ -237,13 +238,62 @@ import Layout from "../layouts/Layout.astro";
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-          const messageBox = document.getElementById("id_message");
-          const charCount = document.getElementById("charCount");
-      
-          // Update character count on input
-          messageBox.addEventListener("input", () => {
-            charCount.textContent = `${messageBox.value.length}/600`;
-          });
+            const messageBox = document.getElementById("id_message");
+            const charCount = document.getElementById("charCount");
+
+            // Update character count on input
+            messageBox.addEventListener("input", () => {
+                charCount.textContent = `${messageBox.value.length}/600`;
+            });
         });
-      </script>
+
+    document.getElementById("submitButton").addEventListener("click", async () => {
+        const form = document.getElementById("contactForm");
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch("http://localhost:3000/send-email", {
+                method: "POST",
+                body: JSON.stringify(Object.fromEntries(formData)),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const result = await response.text();
+
+            if (response.ok) {
+                showPopup("Success", result, "success");
+                form.reset(); // Reset the form after successful submission
+            } else {
+                showPopup("Error", result, "error");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            showPopup("Error", "Failed to send the message. Please try again.", "error");
+        }
+    });
+    function showPopup(title, message, type) {
+    const popup = document.createElement("div");
+    popup.className = `fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg z-50 ${
+        type === "success" ? "border-green-500" : "border-red-500"
+    } border-2`;
+
+    popup.innerHTML = `
+        <h2 class="text-lg font-bold mb-4">${title}</h2>
+        <p class="text-gray-700">${message}</p>
+        <button class="mt-4 px-4 py-2 bg-[#B6CB23] text-white rounded-md hover:bg-green-600" id="closePopupButton">
+            Close
+        </button>
+    `;
+
+    document.body.appendChild(popup);
+
+    // Add event listener to close the popup
+    const closeButton = document.getElementById("closePopupButton");
+    closeButton.addEventListener("click", () => {
+        popup.remove();
+    });
+}
+    </script>
 </Layout>
