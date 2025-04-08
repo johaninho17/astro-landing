@@ -191,3 +191,55 @@ const {} = Astro.props;
     </div>
 
 </div>
+
+<script>
+    document.getElementById("submitButton").addEventListener("click", async () => {
+    const form = document.getElementById("contactForm");
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch("http://localhost:3000/send-email", {
+            method: "POST",
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        const result = await response.text();
+
+        if (response.ok) {
+            showPopup("Success", result, "success");
+            form.reset(); // Reset the form after successful submission
+        } else {
+            showPopup("Error", result, "error");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        showPopup("Error", "Failed to send the message. Please try again.", "error");
+    }
+});
+
+function showPopup(title, message, type) {
+    const popup = document.createElement("div");
+    popup.className = `fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg z-50 ${
+        type === "success" ? "border-green-500" : "border-red-500"
+    } border-2`;
+
+    popup.innerHTML = `
+        <h2 class="text-lg font-bold mb-4">${title}</h2>
+        <p class="text-gray-700">${message}</p>
+        <button class="mt-4 px-4 py-2 bg-[#B6CB23] text-white rounded-md hover:bg-green-600" id="closePopupButton">
+            Close
+        </button>
+    `;
+
+    document.body.appendChild(popup);
+
+    // Add event listener to close the popup
+    const closeButton = document.getElementById("closePopupButton");
+    closeButton.addEventListener("click", () => {
+        popup.remove();
+    });
+}
+</script>

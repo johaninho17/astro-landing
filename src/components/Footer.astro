@@ -19,13 +19,13 @@ const {} = Astro.props;
                 />
             </a>
         </div>
-        <div class="grid grid-cols-2 gap-8 col-span-2">
-            <div id="list" class="grid grid-cols-2 gap-8 ">
-                <div>
-                    <h3 class="text-2xl font-medium leading-7 text-white-500">
+        <div class="grid grid-cols-1 gap-4">
+            <div>
+                <div id="list" class="grid grid-cols-2 gap-8 ">
+                    <h3 class="text-2xl font-medium leading-7 text-white-500 col-span-2">
                         Menu
                     </h3>
-                    <ul role="list" class="mt-6 space-y-4">
+                    <ul role="list" class="space-y-4">
                         <li>
                             <a
                                 href="/"
@@ -48,6 +48,9 @@ const {} = Astro.props;
                                 Contact Us
                             </a>
                         </li>
+                    </ul>
+
+                    <ul class="space-y-4">
                         <li>
                             <a
                                 href="/privacy-policy"
@@ -74,13 +77,12 @@ const {} = Astro.props;
                         </li>
                     </ul>
                 </div>
-                <div class="maw-w-none whitespace-nowrap">
-                    <h3 class="text-2xl font-medium leading-7 text-white-500">
-                        Contact Us
-                    </h3>
-                    <ul role="list" class="mt-6 space-y-4">
+            </div>
+        </div>                
+        <div class="maw-w-none whitespace-nowrap">
+                    <ul role="list" class="">
                         <li>
-                            <div class="mt-8">
+                            <div>
                                 <a
                                     href="/contact"
                                     class="bg-[#B6CB23] text-white px-10 py-4 rounded-md text-base font-normal hover:bg-green-600 transition duration-300 whitespace-nowrap"
@@ -92,8 +94,6 @@ const {} = Astro.props;
                         </li>
                     </ul>
                 </div>
-            </div>
-        </div>
     </div>
     <!-- Border and Copyright Section -->
     <hr class="border-gray-700 mt-12 max-w-7xl mx-auto" />
