@@ -13,15 +13,12 @@ const differencePoints: DifferencePoint[] = [
 ---
 
 <div class="mx-auto mt-16 max-w-7xl sm:px-6">
-  <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-6xl">
-    <dl class="grid grid-cols-1 gap-x-16 gap-y-16 lg:mx-auto lg:grid-cols-2">
-      <div class="relative">
-        <div class="mx-auto max-w-5xl">
-          <h2 class="py-6 text-4xl font-extrabold text-gray-900 leading-20 font-stretch-extra-expanded">
+    <dl class="grid grid-cols-1 gap-x-16 gap-y-16 mx-auto lg:grid-cols-2">
+      <div class="relative mx-auto">
+=          <h2 class="mb-12 text-4xl font-extrabold text-gray-900 leading-20 font-stretch-extra-expanded">
             What Makes Us <span class="block">Different</span>
           </h2>
-        </div>
-        <dt class="text-2xl leading-9 text-semibold text-gray-900">
+        <dt class="text-2xl leading-9 text-semibold text-gray-900 lg: pr-28">
           <ul class="space-y-6">
             {differencePoints.map((point) => (
               <li class="flex items-start">
@@ -53,5 +50,4 @@ const differencePoints: DifferencePoint[] = [
           >
         </button>
       </div>
-  </div>
 </div>

@@ -22,7 +22,7 @@ const features: Feature[] = [
     link: "/services/sales-go-to-market",
   },
   {
-    title: "Marketing and Pipeline Building",
+    title: "Marketing & Pipeline Building",
     image: "images/svg/marketing.svg",
     link: "/services/marketing-and-pipeline",
   },
@@ -40,22 +40,23 @@ const features: Feature[] = [
 ---
 
 <div class="mx-auto max-w-7xl py-16 px-8">
-  <div class="mx-auto mt-16 max-w-7xl lg:text-center">
+  <div class="mx-auto mt-16 max-w-7xl text-center">
     <h2
-      class="mt-16 text-4xl font-black font-stretch-extra-expanded text-gray-900"
+      class="mt-16 text-4xl font-bold font-stretch-extra-expanded text-gray-900"
     >
       What we can do for you
     </h2>
   </div>
-  <div class="mx-auto mt-16 lg:max-w-6xl">
+  <div class="mx-auto mt-16">
     <dl
-      class="grid max-w-none grid-cols-3 gap-x-8 gap-y-16 max-w-none"
+      class="grid grid-cols-3 gap-x-8 gap-y-8"
     >
       {features.map((feature) => (
         <div
           class="relative bg-[#F2F5F7] rounded-xl group feature-item hover:bg-[#1B4671] transition-colors duration-300"
         >
-          <div class="p-6 flex flex-col">
+            
+          <div class="p-6 flex flex-col h-full">
             <img
               src={feature.image}
               alt={feature.title}
@@ -116,8 +117,6 @@ const features: Feature[] = [
             learnMoreButton.style.position = "relative";
             // // Align the text
             text.style.currentColor = "white";
-
-            featureItems.style.backgroundColor = "#1B4671";
         });
 
         item.addEventListener("mouseleave", () => {
