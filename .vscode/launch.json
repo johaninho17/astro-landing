@@ -1,11 +1,42 @@
+// .vscode/launch.json
 {
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "./node_modules/.bin/astro dev",
-      "name": "Development server",
+      // --- Configuration for Client-Side Debugging (Browser) ---
+      "name": "Launch Astro Dev (Client-Side)",
+      "type": "chrome", // Use "msedge" for Edge
       "request": "launch",
-      "type": "node-terminal"
+      // Get the URL from your `astro dev` terminal output (usually 4321)
+      "url": "http://localhost:4321",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        // Helps map compiled code back to your source files
+        "meteor://💻app/*": "${workspaceFolder}/*",
+        "/_astro/*": "${workspaceFolder}/.astro/dist/client/*", // Adjust if needed
+        "/*": "${workspaceFolder}/*" // General fallback
+      },
+      "preLaunchTask": "npm: dev", // Optional: Automatically run 'npm run dev' first
+      "postDebugTask": "Terminate Task" // Optional: Kill the dev server when debugging stops
+    },
+    {
+      // --- Configuration for Server-Side Debugging (Node.js) ---
+      "name": "Attach to Astro Dev (Server-Side)",
+      "type": "node",
+      "request": "attach",
+      // Default Node.js inspect port
+      "port": 9229,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "${workspaceFolder}",
+      "protocol": "inspector",
+      "restart": true, // Automatically try to re-attach if the server restarts
+      "sourceMaps": true,
+      "skipFiles": [
+        "<node_internals>/**", // Skip stepping into Node.js core modules
+        "${workspaceFolder}/node_modules/**" // Skip stepping into node_modules
+      ]
     }
   ]
 }
