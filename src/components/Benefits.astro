@@ -16,8 +16,7 @@ const logos = [
   { src: "images/logos/aldi-nord-logo.png", alt: "Aldi Nord Logo" },
   { src: "images/logos/allianz.png", alt: "Allianz Logo" },
     { src: "images/logos/lego.png", alt: "Lego Logo" },
-{ src: "images/logos/lvmh.png", alt: "Louis Vuitton Logo" },
-  
+    { src: "images/logos/lvmh.png", alt: "Louis Vuitton Logo" },
   { src: "images/logos/ikea.png", alt: "Ikea logo" },
   
 ];
@@ -34,57 +33,56 @@ interface Opportunity {
 
 const benefits: Benefit[] = [
     {
-        title: "Robust growing IT Market driven by digital transformation.",
-        description: "IT spending expected to grow 9% in 2025",
+        title: "Robust growing IT Market driven by digital transformation",
+        description: "The overall European software market is expected to grow by 10 - 12% CAGR until 2030",
     },
     {
-        title: "Large pool of very skilled workforce.",
-        description: "Large pool of very skilled workforce.",
+        title: "Large pool of very skilled workforce",
+        description: "EU IT workforce grew by 60% within ten years",
     },
     {
-        title: "Significant number of global brands.",
+        title: "Significant number of global brands",
         description: "25% of Top 100 global brands",
     },
     {
-        title: "Borderless market of 27 EU countries.",
+        title: "Borderless market of 27 EU countries",
         description:
-            "EU GDP representing one-sixth of global economy and 14% of world’s trade",
+            "EU GDP represents one-sixth of global economy and 14% of world’s trade",
     },
     {
-        title: "More major economies within your reach.",
-        description: "UK, Switzerland, Denmark",
+        title: "More major economies within your reach",
+        description: "United Kingdom, Switzerland, Norway",
     },
 ];
 
 const opportunities: Opportunity[] = [
     { text: "Capitalize on significant growth potential." },
-    { text: "Hedge against turndowns in your home market." },
+    { text: "Hedge against downturns in your home market." },
     { text: "Better position your company to sell to global accounts." },
     { text: "Improve regional market penetration with a European team." },
-    { text: "Elevate your brand onto the global stage." },
+    { text: "Elevate your brand to the global stage." },
     { text: "Access an international talent pool." },
 ];
 ---
 
-<div class="mx-auto mt-12 max-w-7xl sm:px-6 sm:justify-center">
+<div class="mx-auto mt-12 max-w-7xl sm:px-6 sm:justify-center my-4 px-2">
     <div id="benefits" class="mx-auto mt-16">
         <dl
-            class="grid sm:max-w-xl grid-cols-1 gap-x-16 gap-y-16 lg:max-w-none lg:grid-cols-2 sm:justify-items-center"
+            class="grid sm:max-w-xl grid-cols-1 gap-x-16 gap-y-16 lg:max-w-none lg:grid-cols-2 sm:justify-items-center "
         >
             <div id="logos" class="relative">
                 <div
-                class="rounded-xl p-8 ring-1 ring-gray-900/10 sm:p-10 relative bg-[#F2F5F7] sm:justify-items-center"
+                class="rounded-xl p-8 ring-1 ring-gray-900/10 sm:p-10 relative sm:justify-items-center"
               >
-                <div class="grid grid-cols-4 gap-8">
-                  {logos.map((logo, index) => (
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">{logos.map((logo, index) => (
                     <div
-                      class={`flex items-center justify-center ${
+                      class={`flex items-center justify-center col-span-1 ${
                         index >= 16 ? "col-span-2" : ""
                       }`}
-                    >
+                       >
                       <img
                         src={logo.src}
-                        alt={logo.alt}
+                          alt={logo.alt}
                         class="w-15 h-15 object-fill"
                       />
                     </div>
@@ -100,7 +98,7 @@ const opportunities: Opportunity[] = [
                         European Market Benefits
                     </h2>
                 </div>
-                <dt class="leading-7 text-gray-900">
+                <dt class="leading-7 text-gray-900 sm:col-span-1 ">
                     <div class="space-y-4">
                         {
                             benefits.map((benefit) => (
@@ -130,39 +128,36 @@ const opportunities: Opportunity[] = [
     </div>
 
     <div id="opportunities" class="mx-auto mt-16 max-w-6xl">
-        <div class="grid grid-cols-1 gap-x-16 gap-y-16 lg:mx-auto lg:grid-cols-2">
-            <div class="relative">
+        <div class="grid grid-cols-1 gap-x-16 gap-y-16 lg:mx-auto md:grid-cols-2">
+            <div class="relative ">
                 <div class="mx-auto max-w-5xl">
-                    <h2 class="py-4 text-4xl font-bold text-gray-900">
+                    <h2 class="py-4 text-4xl font-bold text-gray-900 px-4">
                         Your Company’s Opportunities
                     </h2>
                 </div>
-                <dt class="text-lg font-semibold leading-7 text-gray-900">
-                    <ul class="space-y-6">
-                        {
-                            opportunities.map((opportunity) => (
-                                <li class="flex items-start">
-                                    <span class="mr-4 flex-shrink-0">
-                                        <img
-                                            src="images/check_circle_green.png"
-                                            alt="Check"
-                                            class="w-6 h-6"
-                                        />
-                                    </span>
-                                    <p class="text-gray-900">
-                                        {opportunity.text}
-                                    </p>
-                                </li>
-                            ))
-                        }
+                <div class="text-lg font-semibold leading-7 text-gray-900 px-4">
+                    <ul class="list-none ">
+                        {opportunities.map((opportunity) => (
+                            <li class="flex items-start py-3">
+                                <span class="mr-4 flex-shrink-0">
+                                    <img
+                                        src="images/check_circle_green.png"
+                                        alt="Check"
+                                        class="w-6 h-6"
+                                    />
+                                </span>
+                                <p class="text-gray-900 font-bold">{opportunity.text}</p>
+                            </li>
+                        ))}
                     </ul>
-                </dt>
+                </div>
             </div>
-            <div class="relative">
+            <div class="relative ">
                 <img
                     class="relative inset-0 h-full w-full object-cover rounded-2xl"
                     src="images/balcony.png"
                     alt="Balcony"
+                    loading="lazy"
                 />
             </div>
         </div>

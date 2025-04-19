@@ -22,7 +22,7 @@ const howItems: HowItem[] = [
   },
   {
     description:
-      "We offer to keep a close look at the numbers and to conduct Sales and other KPI performance reviews.",
+      "We offer a service package that includes monitoring key performance data and conducting sales and other KPI reviews with you and your local team.",
     image: "images/svg/performance.svg",
   },
   {
@@ -32,11 +32,10 @@ const howItems: HowItem[] = [
   },
 ];
 ---
-
-<div class="mx-auto py-4 bg-[#F2F5F7]">
-  <div class="mx-auto my-16 max-w-7xl sm:px-6">
-    <div class="mx-auto mt-16 max-w-2xl lg:text-center">
-      <h2 class="text-4xl font-bold font-stretch-extra-expanded text-gray-900">
+<div class="mx-4 py-4 mt-4 mb-4">
+  <div class="mx-auto my-16 max-w-7xl px-4">
+    <div class="mx-auto mt-16 max-w-2xl text-center">
+      <h2 class="text-4xl font-bold text-gray-900">
         How We Work
       </h2>
     </div>
@@ -45,12 +44,12 @@ const howItems: HowItem[] = [
     >
       {howItems.map((item) => (
         <div
-          class="relative rounded-xl ring-gray-900/10 p-6 relative bg-white shadow-2xl"
+          class="relative rounded-xl p-6 relative bg-white shadow-2xl"
         >
-          <div>
-            <img class="h-auto w-auto mb-8" src={item.image} alt="How We Work" />
+          <div class="flex justify-center">
+            <img class="h-auto w-12 mb-8" src={item.image} alt="How We Work" />
           </div>
-          <dd class="mt-4 text-base leading-7 text-gray-600">{item.description}</dd>
+          <dd class="mt-4 text-base leading-relaxed text-gray-600">{item.description}</dd>
         </div>
       ))}
     </div>

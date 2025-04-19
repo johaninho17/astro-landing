@@ -18,7 +18,16 @@ module.exports = {
 				'roboto': ['Roboto', 'sans-serif'],
 				'nunito': ["'Nunito'", 'sans-serif'],
 			},
+			colors: {
+				'brand-blue': '#0F2C4D', // Example
+				'brand-green': '#AAD54B', // Example
+				'brand-gray': '#555555', // Example
+				// ... other colors
+			 }
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/typography'), // Add this line
+		// require('@tailwindcss/aspect-ratio'), // Keep if needed
+	  ],
 }

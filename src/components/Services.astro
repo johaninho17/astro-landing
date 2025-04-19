@@ -13,72 +13,64 @@ const { title, description, expertise, img, icons } = Astro.props;
 const rows = Math.ceil(expertise.length / 4);
 ---
 
-<!-- First Div: Green Background with Two Columns -->
-<div id="service-title" class="bg-[#EEF2D5] py-12">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 px-6">
+<div id="service-title" class="bg-[#EEF2D5] py-10 sm:py-12 mb-4 px-4">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-12 items-center">
     <!-- Left Column: Centered Heading and Paragraph -->
-    <div class="flex flex-col justify-center">
-      <h2 class="text-6xl font-bold mb-4">{title}</h2>
-      <p class="text-lg">{description}</p>
+    <div class="text-center lg:text-left">
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">{title}</h2>
+      <p class="text-base sm:text-lg leading-relaxed">{description}</p>
     </div>
-    <!-- Right Column: Image -->
+    
     <div class="flex justify-center">
-      <img src={img} alt={title} class="w-full max-w-md object-contain" />
+      <img src={img} alt={title} class="w-full max-w-md object-contain"  />
+    
     </div>
   </div>
 </div>
 
-<div id="expertise-grid" class="pt-24">
-  <h2 class="text-center text-4xl font-bold mb-8">
+<div id="expertise-grid" class="pt-24 my-4 sm:px-2">
+  <h2 class="text-center text-4xl font-bold mb-8 px-4">
     Delivering Expertise and Tangible Results
-  </h2>
-  <div class="max-w-7xl mx-auto py-12 px-24">
-    <!-- First Row: 3 Columns if there are 5 items -->
+  </h2>  
+  <div class="max-w-7xl mx-auto py-12 px-4">
+   {expertise.length === 5 ? (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {expertise.slice(0, 3).map((item, index) => (
+          <div 
+            class={`p-6 flex flex-col items-center text-center ${index !== 2 ? 'sm:border-r' : ''} border-gray-300`}
+          >
+            <img
+              src={icons[index]}
+              alt={`Icon ${index + 1}`}
+              class="w-12 h-12 mb-4"
+            />
+            <p>{item}</p>
+          </div>
+        ))}
+      </div>
+    ) : null}
+
     {expertise.length === 5 ? (
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {expertise.slice(0, 3).map((item, index) => (
-            <div
-              class={`${
-                index === 2 ? '' : 'border-r'
-              } border-gray-300 p-6 flex flex-col`}
-            >
-              <img
-                src={icons[index]}
-                alt={`Icon ${index + 1}`}
-                class="w-12 h-12 mb-4"
-              />
-              <p>{item}</p>
-            </div>
-          ))}
-        </div>
-      ) : null}
-  
-      <!-- Second Row: Centered Items if there are 5 items -->
-      {expertise.length === 5 ? (
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center mt-6">
-          {expertise.slice(3).map((item, index) => (
-            <div
-              class={`${
-                index === 1 ? '' : 'border-r'
-              } border-gray-300 p-6 flex flex-col px-24`}
-            >
-              <img
-                src={icons[index + 3]}
-                alt={`Icon ${index + 4}`}
-                class="w-12 h-12 mb-4"
-              />
-              <p>{item}</p>
-            </div>
-          ))}
-        </div>
-      ) : (
-      <!-- Default Grid Layout -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+        {expertise.slice(3).map((item, index) => (
+          <div 
+            class={`p-6 flex flex-col items-center text-center ${index !== 1 ? 'sm:border-r' : ''} border-gray-300`}
+          >
+            <img
+              src={icons[index + 3]}
+              alt={`Icon ${index + 4}`}
+              class="w-12 h-12 mb-4"
+            />
+            <p>{item}</p>
+          </div>
+        ))}
+      </div>
+    ) : (
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {expertise.map((item, index) => (
           <div
-            class={`${
-              index % 4 !== 3 ? 'border-r' : ''
-            } ${rows === 2 && index < 4 ? 'border-b' : ''} border-gray-300 p-6 flex flex-col`}
+            class={`p-6 flex flex-col items-center text-center ${index !== 3 ? 'sm:border-r' : ''} border-gray-300`}
           >
             <img
               src={icons[index]}
@@ -90,13 +82,14 @@ const rows = Math.ceil(expertise.length / 4);
         ))}
       </div>
     )}
+  </h2>
   </div>
 
-  <div id="service-contact" class="flex justify-center mt-8">
+  <div id="service-contact" class="flex justify-center mt-8 w-full">
     <a
       href="/contact"
       class="bg-[#B6CB23] text-[#1B4671] px-6 py-3 rounded-md text-base font-medium hover:bg-green-600 transition duration-300"
-    >
+      >
       Contact Us <span aria-hidden="true">&rarr;</span>
     </a>
   </div>

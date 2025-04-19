@@ -1,0 +1,141 @@
+---
+// src/components/CookieBanner.astro
+---
+
+<div id="cookieBanner" class="fixed bottom-0 left-0 w-full bg-gray-800 text-white p-4 z-50 hidden">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="flex-grow">
+            This website uses cookies to ensure you get the best experience on our website.
+            <a href="/cookie-policy" class="underline">Learn more</a>
+        </p>
+        <div class="flex flex-col md:flex-row gap-4">
+            <button id="acceptAllCookies" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                Accept All
+            </button>
+            <button id="rejectAllCookies" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                Reject All
+            </button>
+            <button id="customizeCookies" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
+                Customize
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Cookie Settings Modal -->
+<div id="cookieSettingsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg w-full max-w-md">
+        <h3 class="text-xl font-bold mb-4">Cookie Settings</h3>
+        <div id="cookieSettings" class="mb-4">
+            <div class="flex items-center justify-between mb-2">
+                <span>Essential Cookies</span>
+                <input type="checkbox" id="essentialCookies" checked disabled>
+            </div>
+            <div class="flex items-center justify-between mb-2">
+                <span>Analytics Cookies</span>
+                <input type="checkbox" id="analyticsCookies">
+            </div>
+        </div>
+        <div class="flex justify-end gap-4">
+            <button id="saveCookieSettings" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Save Settings</button>
+            <button id="cancelCookieSettings" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const cookieBanner = document.getElementById('cookieBanner');
+    const acceptAllCookiesButton = document.getElementById('acceptAllCookies');
+    const rejectAllCookiesButton = document.getElementById('rejectAllCookies');
+    const customizeCookiesButton = document.getElementById('customizeCookies');
+    const cookieSettingsModal = document.getElementById('cookieSettingsModal');
+    const saveCookieSettingsButton = document.getElementById('saveCookieSettings');
+    const cancelCookieSettingsButton = document.getElementById('cancelCookieSettings');
+    const essentialCookiesCheckbox = document.getElementById('essentialCookies');
+    const analyticsCookiesCheckbox = document.getElementById('analyticsCookies');
+
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    function getCookie(name) {
+        const cookieName = name + "=";
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(';');
+        for (let i = 0; i < cookieArray.length; i++) {
+            let cookie = cookieArray[i];
+            while (cookie.charAt(0) === ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(cookieName) === 0) {
+                return cookie.substring(cookieName.length, cookie.length);
+            }
+        }
+        return "";
+    }
+
+    function showCookieBanner() {
+        cookieBanner.classList.remove('hidden');
+    }
+
+    function hideCookieBanner() {
+        cookieBanner.classList.add('hidden');
+    }
+
+    function showCookieModal() {
+        cookieSettingsModal.classList.remove('hidden');
+    }
+
+    function hideCookieModal() {
+        cookieSettingsModal.classList.add('hidden');
+    }
+
+    function applyCookieSettings(settings) {
+        setCookie('cookieConsent', JSON.stringify(settings), 365);
+    }
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const cookieConsent = getCookie('cookieConsent');
+        if (!cookieConsent) {
+            showCookieBanner();
+        }
+    });
+
+    acceptAllCookiesButton.addEventListener('click', () => {
+        applyCookieSettings({
+            essential: true,
+            analytics: true,
+        });
+        hideCookieBanner();
+    });
+
+    rejectAllCookiesButton.addEventListener('click', () => {
+        applyCookieSettings({
+            essential: true,
+            analytics: false,
+        });
+        hideCookieBanner();
+    });
+
+    customizeCookiesButton.addEventListener('click', () => {
+        showCookieModal();
+    });
+
+    saveCookieSettingsButton.addEventListener('click', () => {
+        const settings = {
+            essential: true,
+            analytics: analyticsCookiesCheckbox.checked,
+        };
+        applyCookieSettings(settings);
+        hideCookieModal();
+        hideCookieBanner()
+    });
+
+    cancelCookieSettingsButton.addEventListener('click', () => {
+        hideCookieModal();
+    });
+
+</script>

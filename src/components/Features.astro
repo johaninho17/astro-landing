@@ -1,88 +1,92 @@
 ---
+// src/components/Features.astro (Example file name)
 interface Feature {
   title: string;
-  image: string;
+  image: string; // Path relative to the 'public' directory
   link: string;
 }
 
+// Ensure these paths are correct relative to your project's 'public' folder
+// e.g., if your image is at 'public/images/svg/assessment.svg', the path here is '/images/svg/assessment.svg'
 const features: Feature[] = [
   {
     title: "Assessment and Planning",
-    image: "images/svg/assessment.svg",
+    image: "/images/svg/assessment.svg", // Use leading slash for root-relative paths from 'public'
     link: "/services/assessment-and-planning",
   },
   {
     title: "Product and Technology Advisory",
-    image: "images/svg/product.svg",
+    image: "/images/svg/product.svg",
     link: "/services/product-and-technology",
   },
   {
-    title: "Sales and Go-to-Market",
-    image: "images/svg/sales.svg",
+    title: "Sales and Go-To-Market Modelling", // Ensure this image file exists
+    image: "/images/svg/sales.svg",
     link: "/services/sales-go-to-market",
   },
   {
-    title: "Marketing & Pipeline Building",
-    image: "images/svg/marketing.svg",
+    title: "Marketing and Pipeline Building",
+    image: "/images/svg/marketing.svg",
     link: "/services/marketing-and-pipeline",
   },
   {
-    title: "Recruiting and Talent Acquisition",
-    image: "images/svg/recruit.svg",
+    title: "European Talent Acquisition",
+    image: "/images/svg/recruit.svg",
     link: "/services/recruiting-and-talent",
   },
   {
-    title: "Legal & Regulatory Navigation",
-    image: "images/svg/legal.svg",
+    title: "Legal and Regulatory Navigation",
+    image: "/images/svg/legal.svg",
     link: "/services/legal-and-regulatory",
   },
 ];
 ---
 
-<div class="mx-auto max-w-7xl py-16 px-8">
-  <div class="mx-auto mt-16 max-w-7xl text-center">
-    <h2
-      class="mt-16 text-4xl font-bold font-stretch-extra-expanded text-gray-900"
-    >
+<div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8"> {/* Added sm/lg padding */}
+  <div class="mx-auto max-w-3xl text-center"> {/* Constrained width for title */}
+    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"> {/* Responsive text size */}
       What we can do for you
     </h2>
+    {/* Optional: Add a paragraph describing the section */}
+    <!-- <p class="mt-4 text-lg text-gray-600">Description here...</p> -->
   </div>
-  <div class="mx-auto mt-16">
-    <dl
-      class="grid grid-cols-3 gap-x-8 gap-y-8"
-    >
+
+  {/* Use ul/li for semantic list or keep dl if definition list makes sense */}
+  <div class="mt-16">
+    <dl class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"> {/* Consistent gap */}
       {features.map((feature) => (
-        <div
-          class="relative bg-[#F2F5F7] rounded-xl group feature-item hover:bg-[#1B4671] transition-colors duration-300"
-        >
-            
-          <div class="p-6 flex flex-col h-full">
-            <img
-              src={feature.image}
-              alt={feature.title}
-              class="w-20 h-20 mb-10 feature-image"
-            />
-            <p class="text-xl font-bold feature-text group-hover:text-white force-break">
-              {feature.title}
-            </p>
-          </div>
-          <!-- Learn More Button -->
-          <div
-            class="absolute bottom-6 left-0 right-0 flex ml-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        <div class="flex"> {/* Use flex to ensure equal height if content varies */}
+          {/* Make the entire card a link and the group */}
+          <a
+            href={feature.link}
+            class="group flex flex-col bg-[#F2F5F7] hover:bg-[#1B4671] rounded-xl p-6 text-left transition-colors duration-300 w-full feature-item"
           >
-            <a
-              href={feature.link}
-              class="bg-[#B6CB23] text-[#1B4671] px-6 py-2 rounded-2xl text-sm font-semibold transition duration-300 learn-more-btn"
-            >
-              Learn More <span aria-hidden="true">
-                <img
-                  src="images/svg/arrow_outward.svg"
-                  alt="Arrow"
-                  class="inline-block w-4 h-4"
-                />
-              </span>
-            </a>
-          </div>
+            {/* Image Container */}
+            <div class="mb-6 flex justify-left">
+              <img
+                src={feature.image}
+                alt={feature.title} /* Add meaningful alt text */
+                class="w-20 h-20 transition-transform duration-300 group-hover:scale-105" /* Optional: subtle image hover effect */
+                loading="lazy" /* Improve performance */
+              />
+            </div>
+
+            {/* Text Content */}
+            <dt class="text-xl font-bold text-gray-900 group-hover:text-white transition-colors duration-300">
+              {feature.title}
+            </dt>
+
+            {/* Removed separate "Learn More" button - whole card is clickable */}
+            {/* Optional: add description text if needed */}
+            {/* <dd class="mt-2 text-base text-gray-600 group-hover:text-gray-200 transition-colors duration-300 flex-grow">
+              Short description...
+            </dd> */}
+
+            {/* Optional: Add a visual cue for action if desired */}
+            <div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-semibold text-[#B6CB23]">
+              Learn More →
+            </div>
+          </a>
         </div>
       ))}
     </dl>
@@ -90,40 +94,11 @@ const features: Feature[] = [
 </div>
 
 <style>
-  /* Force text to break into a second line */
-  .force-break {
-    display: inline-block; /* Ensures the text respects the width */
-    max-width: 250px; /* Adjust this value to control where the break happens */
-    white-space: normal; /* Allows wrapping */
-    word-break: break-word; /* Breaks long words if necessary */
-    overflow-wrap: break-word; /* Ensures wrapping for long words */
-  }
+ /* Scoped styles apply only to this component */
+ /* Keep media query if needed, but maybe handle padding with responsive Tailwind classes */
+  @media (max-width: 640px) {
+    .feature-item {
+       padding: 1rem; /* Example using rem */
+     }
+  } 
 </style>
-
-<script>
-    // Select all feature items
-    const featureItems = document.querySelectorAll(".feature-item");
-
-    featureItems.forEach((item) => {
-        const imageContainer = item.querySelector(".feature-image");
-        const text = item.querySelector(".feature-text");
-        const learnMoreButton = item.querySelector(".learn-more-btn");
-
-        // Add hover event listeners
-        item.addEventListener("mouseenter", () => {
-            // Hide the image container
-            imageContainer.style.display = "none";
-            // Make the button relative
-            learnMoreButton.style.position = "relative";
-            // // Align the text
-            text.style.currentColor = "white";
-        });
-
-        item.addEventListener("mouseleave", () => {
-            // Show the image container
-            imageContainer.style.display = "flex";
-            // Revert the button to its original state
-            learnMoreButton.style.position = "static";
-        });
-    });
-</script>

@@ -1,0 +1,6 @@
+{
+  "firebase_hosting": {
+    "deploymentHostingUrl": "https://go-europe-consulting.web.app"
+  },
+  "cloud_run_deploy": {}
+}

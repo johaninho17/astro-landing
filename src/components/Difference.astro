@@ -1,4 +1,5 @@
 ---
+// src/components/DifferenceSection.astro (Example file name)
 interface DifferencePoint {
   text: string;
 }
@@ -10,44 +11,69 @@ const differencePoints: DifferencePoint[] = [
   { text: "We follow a data-driven approach." },
   { text: "We help you build performance-driven local teams." },
 ];
+
+const imagePath = "/images/blue-chess.png"; // Use root-relative path from 'public'
+const checkImagePath = "/images/check_circle_green.png"; // Use root-relative path from 'public'
 ---
 
-<div class="mx-auto mt-16 max-w-7xl sm:px-6">
-    <dl class="grid grid-cols-1 gap-x-16 gap-y-16 mx-auto lg:grid-cols-2">
-      <div class="relative mx-auto">
-=          <h2 class="mb-12 text-4xl font-extrabold text-gray-900 leading-20 font-stretch-extra-expanded">
-            What Makes Us <span class="block">Different</span>
-          </h2>
-        <dt class="text-2xl leading-9 text-semibold text-gray-900 lg: pr-28">
-          <ul class="space-y-6">
-            {differencePoints.map((point) => (
-              <li class="flex items-start">
-                <span class="mr-4 flex-shrink-0">
-                  <img src="images/check_circle_green.png" alt="Check" class="w-8 h-8" />
-                </span>
-                <p class="text-gray-900">{point.text}</p>
-              </li>
-            ))}
-          </ul>
-        </dt>
+<section id="point" class="mx-auto mt-16 max-w-6xl px-4 sm:px-6 lg:px-8">
+  {/* Use flex and items-stretch on large screens to match heights */}
+  <div class="grid grid-cols-1 lg:grid-cols-2 lg:items-stretch gap-12 md:gap-16">
+
+    {/* --- Left Column (Text Content) --- */}
+    {/* No need for nested 'relative' or extra max-w-5xl here unless specifically needed */}
+    <div>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">
+        What Makes Us Different
+      </h2>
+      {/* Removed extra padding here, rely on parent padding */}
+      <div class="mt-6 sm:mt-8">
+        {/* Removed extra font/leading classes, apply to list items or paragraph if needed */}
+        <ul class="list-none space-y-2 sm:space-y-3"> {/* Added space-y for gap */}
+          {differencePoints.map((point) => (
+            <li class="flex items-start"> {/* Removed padding, use space-y on parent */}
+              <span class="mr-3 sm:mr-4 flex-shrink-0"> {/* Adjusted margin */}
+                <img
+                  src={checkImagePath}
+                  alt="Check" 
+                  class="w-6 h-6"
+                  loading="lazy"
+                />
+              </span>
+              {/* Use standard paragraph for text, apply styles if needed */}
+              <p class="text-base sm:text-lg text-gray-900 font-semibold leading-relaxed"> {/* Example styling */}
+                {point.text}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div class="relative">
-          <img
-            class="relative inset-0 h-full w-full object-cover rounded-2xl"
-            src="images/blue-chess.png"
-            alt="Chess"
-          />
-      </div>
-    </dl>
-    <div class="my-16 lg:justify-center text-center">
-        <button
-          class="bg-[#B6CB23] hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg"
-        >
-          <a
-            href="/contact"
-            class="text-sm font-roboto leading-6 text-[#1B4671]"
-            >Contact Us <span aria-hidden="true">&rarr;</span></a
-          >
-        </button>
-      </div>
-</div>
+    </div>
+
+    {/* --- Right Column (Image) --- */}
+    {/* This div will stretch vertically because of lg:items-stretch on parent */}
+    <div class="relative flex items-center justify-center lg:justify-end"> {/* Center content vertically/horizontally */}
+      {/* Removed mx-auto, inset, w-full, object-contain */}
+      {/* Added max-h-[500px] example, adjust as needed */}
+      <img
+        class="h-auto w-full max-w-lg lg:max-w-none lg:h-full object-cover rounded-2xl"
+        src={imagePath}
+        alt="Blue chess pieces on a board, representing strategy"
+        loading="lazy"
+      />
+      {/* Removed lg:ml-12, use gap on grid parent instead */}
+    </div>
+  </div>
+
+  {/* --- Button Section --- */}
+  {/* Centered button below the grid */}
+  <div class="text-center mt-12 mb-10"> {/* Adjusted margins */}
+    {/* Button contains link, not the other way around */}
+    <a
+      href="/contact"
+      class="inline-block bg-[#B6CB23] hover:bg-[#9cb01e] text-[#1B4671] font-bold py-3 px-6 rounded-lg text-sm leading-6 transition-colors duration-200"
+    >
+      Contact Us <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>

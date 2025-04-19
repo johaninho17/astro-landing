@@ -1,8 +1,10 @@
-<div class="relative isolate overflow-hidden sm:h-[500px] lg:h-[600px]">
+---
+---
+<div class="relative isolate overflow-hidden h-[350px] sm:h-[500px] lg:h-[600px] mb-4 sm:px-2 px-4">
     <!-- Image Container -->
-    <div class="absolute inset-0 w-full h-full overflow-hidden">
+    <div class="absolute inset-0 w-full h-full overflow-hidden sm:m-0">
         <img
-            class="slider-image"
+            class="slider-image "
             src="images/paris.png"
             alt="Paris Background"
         />
@@ -45,15 +47,15 @@
             alt="Overlay"
             class="absolute w-full h-full object-fill"
         />
-        <div class="absolute max-w-2xl mx-48 my-48 sm:mx-32 sm:my-32">
+        <div class="absolute max-w-2xl px-4 mx-auto my-24 sm:my-32 sm:text-left sm:px-4">
             <h1
-                class="font-extrabold text-white sm:text-4xl md:text-6xl"
+                class="font-extrabold text-white text-xl sm:text-3xl md:text-6xl leading-normal"
             >
                 Your Partner in Entering the European IT Market
-            </h1>
-            <p class="mt-6 lg:text-lg sm:text-sm font-roboto text-white lg:line-clamp-2">
+            </h1>            
+            <p class="mt-6 lg:text-lg sm:text-sm font-roboto text-white lg:line-clamp-2 leading-relaxed">
                 <strong
-                    >We advise and assist IT companies in establishing and
+                    >We advise and assist IT companies in establishing and 
                     expanding their presence in the European Market.</strong
                 >
             </p>
@@ -92,21 +94,21 @@
                 // Update the current index
                 currentIndex = nextIndex;
             }, 3000); // Match the duration of the CSS animation
-        }
+        } 
 
-        // Start the background transition every 10 seconds
-        setInterval(changeBackground, 10000);
+        // Start the background transition every x seconds
+        setInterval(changeBackground, 8000);
     });
 </script>
 
 <style>
 /* Sliding animations */
-.slide-out-left {
-    animation: slide-out-left 3s ease-in-out forwards;
+.slide-out-left, .slide-in-right {
+    animation-timing-function: ease-in-out;
 }
 
-.slide-in-right {
-    animation: slide-in-right 3s ease-in-out forwards;
+.slide-out-left {
+    animation: slide-out-left 2000ms forwards;
 }
 
 @keyframes slide-out-left {
@@ -116,6 +118,10 @@
     100% {
         transform: translateX(-100%);
     }
+}
+
+.slide-in-right {
+    animation: slide-in-right 2000ms forwards;
 }
 
 @keyframes slide-in-right {
@@ -134,7 +140,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: cover;
     transform: translateX(100%); /* Start off-screen to the right */
     visibility: hidden; /* Keep the element in the rendering flow */
 }

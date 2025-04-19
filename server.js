@@ -2,10 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import nodemailer from "nodemailer";
 import cors from "cors";
-import dotenv from "dotenv";
-
-// Load environment variables
-dotenv.config();
+ç
 
 const app = express();
 const PORT = 3000;

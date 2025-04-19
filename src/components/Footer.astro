@@ -6,26 +6,26 @@ const {} = Astro.props;
 
 <footer
     aria-labelledby="footer-heading"
-    class="relative border-t border-gray-900/10 py-24 bg-black text-white"
+    class="relative border-t border-gray-900/10 py-16 bg-black text-white mt-4 mb-4 px-4"
 >
-    <div id="full" class="grid grid-cols-4 gap-8 max-w-none px-6">
+    <div id="full" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
         <!-- Image -->
-        <div class="col-span-2 flex s:ml-6">
+        <div class="flex md:col-span-2">
             <a href="/" class="">
                 <img
-                    class="h-auto max-w-full lg:ml-48 sm:ml-6"
+                    class="h-auto max-w-full"
                     src="/images/goeuropelogo.png"
                     alt="Company name"
                 />
             </a>
         </div>
-        <div class="grid grid-cols-1 gap-4">
-                <div id="list" class="grid grid-cols-2 gap-8 ">
-                    <h3 class="text-2xl font-medium leading-7 text-white-500 col-span-2">
+        <div class="grid grid-cols-1 gap-4 md:col-span-1">
+                <div id="list" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <h3 class="text-2xl font-bold leading-7 text-white-500 md:col-span-2">
                         Menu
                     </h3>
-                    <ul role="list" class="space-y-4">
-                        <li>
+                    <ul role="list" class="space-y-4 mx-2">
+                        <li >
                             <a
                                 href="/"
                                 class="text-l leading-6 text-gray-300 hover:text-gray-500"
@@ -49,7 +49,7 @@ const {} = Astro.props;
                         </li>
                     </ul>
 
-                    <ul class="space-y-4">
+                    <ul class="space-y-4 mx-2">
                         <li>
                             <a
                                 href="/privacy-policy"
@@ -68,34 +68,34 @@ const {} = Astro.props;
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href="/cookie-policy"
                                 class="text-l leading-6 text-gray-300 hover:text-gray-500"
                             >
-                                Cookie Banner
+                                Cookie Policy
                             </a>
                         </li>
                     </ul>
                 </div>
         </div>                
-        <div class="maw-w-none whitespace-nowrap">
-                    <ul role="list" class="">
-                        <li>
+        <div class="maw-w-none md:col-span-1">
+                    <ul role="list">
+                        <li class="w-full">
                             <div>
                                 <a
                                     href="/contact"
-                                    class="bg-[#B6CB23] text-white px-10 py-4 rounded-md text-base font-normal hover:bg-green-600 transition duration-300 whitespace-nowrap"
+                                    class="bg-[#B6CB23] text-white w-full md:px-10 px-4 py-4 rounded-md text-base font-normal hover:bg-green-600 transition duration-300 whitespace-nowrap"
                                     >Contact Us <span aria-hidden="true"
-                                        >&rarr;</span
+                                        >→</span
                                     ></a
                                 >
                             </div>
                         </li>
-                    </ul>
-                </div>
+                   </ul>
+        </div>
     </div>
     <!-- Border and Copyright Section -->
     <hr class="border-gray-700 mt-12 max-w-7xl mx-auto" />
-    <div class="mt-6 text-center text-sm text-gray-300">
+    <div class="mt-6 text-center text-sm text-gray-300 p-2">
         &copy; Copyright All right reserved
     </div>
 </footer>

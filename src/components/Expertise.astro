@@ -25,48 +25,51 @@ const expertiseItems: ExpertiseItem[] = [
     image: "images/svg/scaling.svg",
   },
   {
-    title: "At the Intersection of Business and Technology",
+    title: "Business meets Technology",
     description:
-      "We have deep knowledge at the intersection of business and technology. We understand how your customers are leveraging technology for business goals.",
+      "Our expertise lies where business strategy meets technology. We understand how your customers think and how they use tech to achieve their goals.",
     image: "images/svg/intersection.svg",
   },
 ];
 ---
 
-<div class="mx-auto sm:mt-32 py-4 lg:px-8 bg-[#F2F5F7]">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto mt-16 max-w-2xl lg:text-center">
-        <h2 class="text-4xl font-bold font-stretch-extra-expanded text-gray-900">
-          Our Expertise
-        </h2>
-      </div>
-      <div
-        class="my-16 grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4 lg:gap-y-16"
-      >
-        {expertiseItems.map((item) => (
-          <div
-            class="relative rounded-xl ring-gray-900/10 sm:p-6 relative bg-white shadow-2xl"
-          >
-            <dt class="text-xl font-bold leading-7 text-gray-900">
+<div class="mx-auto sm:mt-32 py-4 lg:px-8 my-4 sm:px-4 px-4">
+  <div class="mx-auto max-w-7xl px-4 lg:px-8">
+    <div class="mx-auto mt-16 max-w-2xl lg:text-center">
+      <h2 class="text-4xl font-bold text-gray-900">Our Expertise</h2>
+    </div>
+    <div
+      class="my-16 grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4 lg:gap-y-16"
+    >
+      {
+        expertiseItems.map((item) => (
+          <div class="relative rounded-xl ring-gray-900/10 p-6 bg-white shadow-2xl">
+            <dt class="text-xl font-bold text-gray-900">
               <div>
-                <img class="h-auto w-auto mb-8" src={item.image} alt={item.title} />
+                <img
+                  class="h-auto w-auto mb-8"
+                  src={item.image}
+                  alt={item.title}
+                />
               </div>
-              {item.title}
+              <div class="leading-tight">{item.title}</div>
+              <dd class="mt-4 text-base leading-7 text-gray-600">
+                {item.description}
+              </dd>
             </dt>
-            <dd class="mt-4 text-base leading-7 text-gray-600">{item.description}</dd>
           </div>
-        ))}
-      </div>
-      <div class="mb-16 lg:justify-center text-center">
-        <button
-          class="bg-[#B6CB23] hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl"
+        ))
+      }
+    </div>
+    <div class="mb-16 lg:justify-center text-center sm:text-center">
+        {/* Adjusted margins */}
+        {/* Button contains link, not the other way around */}
+        <a
+          href="/about"
+          class="inline-block bg-[#B6CB23] hover:bg-[#9cb01e] text-[#1B4671] font-bold py-3 px-6 rounded-lg text-sm leading-6 transition-colors duration-200"
         >
-          <a
-            href="/about"
-            class="text-sm font-roboto leading-6 text-[#1B4671]"
-            >More About Us <span aria-hidden="true">&rarr;</span></a
-          >
-        </button>
-      </div>
+          More About Us <span aria-hidden="true">→</span>
+        </a>
     </div>
   </div>
+</div>
