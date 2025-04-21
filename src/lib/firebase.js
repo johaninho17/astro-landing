@@ -1,7 +1,7 @@
 // src/lib/firebase.js
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, writeBatch, doc } from "firebase/firestore";
 
 // Remove the hardcoded config object
 // const firebaseConfig = { ... };
@@ -51,24 +51,71 @@ try {
 
 
 export async function sendFormData(data) {
-  // Ensure db is initialized before trying to use it
+  // Ensure db is initialized
   if (!db) {
-      const errorMsg = "Firestore database is not initialized. Cannot send form data.";
+      const errorMsg = "Firestore database is not initialized. Cannot process form data.";
       console.error(errorMsg);
-      // You might want to inform the user here via the UI as well
       throw new Error(errorMsg);
   }
+
+  // --- Prepare data for the email extension ---
+  // Get the recipient email from environment variables (needs to be set for the function environment, see note below)
+  // For now, let's hardcode it for simplicity, but ideally, configure this elsewhere.
+  const alertRecipient = "team@goeuropeconsulting.com"; // ** REPLACE THIS ** with your actual recipient email
+  const senderName = data.full_name || 'GoEurope Contact'; // Use submitter's name
+
+  // --- Use a Write Batch for atomicity ---
+  const batch = writeBatch(db);
+
+  // 1. Reference and set data for the 'contacts' collection
+  const contactsCol = collection(db, "contacts");
+  const contactDocRef = doc(contactsCol); // Generate a new doc reference in 'contacts'
+  batch.set(contactDocRef, data); // Add the original form data to 'contacts'
+
+  // 2. Reference and set data for the 'mail' collection (monitored by the extension)
+  const mailCol = collection(db, "mail");
+  const mailDocRef = doc(mailCol); // Generate a new doc reference in 'mail'
+
+  // Construct the payload for the Trigger Email extension
+  // See extension docs for full options: https://firebase.google.com/products/extensions/firebase-email-trigger
+  batch.set(mailDocRef, {
+    to: [alertRecipient],
+    replyTo: [data.email],
+    message: {
+      subject: `🚀 New Contact Form: ${data.full_name} (${data.company_name})`,
+      text: `
+      New contact form submission received (ID: ${contactDocRef.id}):
+
+      ------------------------------------
+      Name: ${data.full_name || 'N/A'}
+      Title: ${data.title || 'N/A'}
+      Submitter Email: ${data.email || 'N/A'}
+      Company Name: ${data.company_name || 'N/A'}
+      Website URL: ${data.url || 'N/A'}
+      Submitted At: ${data.submittedAt ? new Date(data.submittedAt).toLocaleString() : 'N/A'}
+      ------------------------------------
+
+      Message:
+      ${data.message || '(No message provided)'}
+
+      ------------------------------------
+
+      Reply directly to this email to respond to ${data.email}.
+              `,
+      // Optional: Add html version if needed, e.g.:
+      // html: `<p>New contact form submission received (ID: ${contactDocRef.id}):</p>...`
+    },
+    // You can add headers, attachments etc. here if needed
+});
+
+
+  // --- Commit the batch ---
   try {
-    // Use the initialized db instance
-    const docRef = await addDoc(collection(db, "contacts"), data);
-    console.log("Document written with ID: ", docRef.id);
-    return docRef.id;
+    await batch.commit();
+    console.log(`Contact data (ID: ${contactDocRef.id}) and email trigger written successfully.`);
+    return contactDocRef.id; // Return the ID of the contact document
   } catch (e) {
-    console.error("Error adding document: ", e);
-    throw e; // Re-throw the error so it can be caught in the form submission handler
+    console.error("Error committing batch write: ", e);
+    throw e; // Re-throw the error
   }
 }
-
-// You might want to export 'db' if you need it elsewhere,
-// but ensure it's handled correctly if initialization failed.
-// export { db };

@@ -2,6 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import { sendFormData } from "../lib/firebase";
 
+// Get the server endpoint URL from environment variables
+const serverEndpoint = import.meta.env.PUBLIC_SERVER_ENDPOINT;
+
+
 ---
 
 <Layout title="Contact Us - GoEurope Consulting">
@@ -246,7 +250,8 @@ import { sendFormData } from "../lib/firebase";
                     event.preventDefault();
                     submitButton.disabled = true;
                     submitButton.textContent = 'Sending...';
-                    // REMOVED: formStatus.textContent = '';
+
+                    // No longer need serverEndpoint check
 
                     const formData = new FormData(form);
                     const data = {
@@ -259,31 +264,35 @@ import { sendFormData } from "../lib/firebase";
                         submittedAt: new Date().toISOString(),
                     };
 
-                    // Basic validation check
+                    // Basic validation check remains the same...
                     if (!data.full_name || !data.title || !data.email || !data.company_name || !data.message) {
-                        showModal("Please fill in all required fields.", "error"); // Show error in modal
+                        showModal("Please fill in all required fields.", "error");
                         submitButton.disabled = false;
                         submitButton.textContent = 'Send message';
                         return;
                     }
 
+                    // Simplified try/catch/finally
                     try {
-                        console.log("Sending data to Firebase:", data);
-                        await sendFormData(data);
-                        showModal("Message sent successfully!", "success"); // Show success in modal
+                        // --- Send to Firebase (which now also triggers email) ---
+                        console.log("Saving data and triggering email via Firebase:", data);
+                        await sendFormData(data); // This now handles both Firestore writes
+                        console.log("Data saved and email trigger initiated.");
+
+                        // --- Handle Success ---
+                        showModal("Message sent successfully!", "success");
                         form.reset();
                         if (messageBox && charCount) {
                            charCount.textContent = `0/600`; // Reset char count
                         }
-                        // Keep button disabled until modal is closed or after a delay?
-                        // Let's re-enable it immediately after success message is shown.
-                        // User will close the modal manually.
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'Send message';
 
                     } catch (error) {
-                        console.error("Error sending message:", error);
-                        showModal("Failed to send message. Please try again later.", "error"); // Show error in modal
+                        // --- Handle Error (from batch commit) ---
+                        console.error("Error processing form submission:", error);
+                        showModal("Failed to send message. Please try again later.", "error");
+
+                    } finally {
+                        // --- Re-enable button ---
                         submitButton.disabled = false;
                         submitButton.textContent = 'Send message';
                     }
