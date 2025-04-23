@@ -64,16 +64,53 @@
 </div>
 
 <script client:load>
-    document.addEventListener("DOMContentLoaded", () => {
+    // Use a variable in a higher scope to store the interval ID
+    let heroSliderIntervalId = null;
+
+    function initializeHeroSlider() {
+        // Clear any previously running interval to prevent duplicates
+        if (heroSliderIntervalId) {
+            clearInterval(heroSliderIntervalId);
+            heroSliderIntervalId = null;
+            // console.log("Cleared previous hero interval"); // Optional: for debugging
+        }
+
         const images = document.querySelectorAll(".slider-image");
+        if (images.length === 0) {
+            // console.log("No slider images found"); // Optional: for debugging
+            return; // Exit if no images are found
+        }
+
         let currentIndex = 0;
 
-        function changeBackground() {
-            const currentImage = images[currentIndex];
-            const nextIndex = (currentIndex + 1) % images.length;
-            const nextImage = images[nextIndex];
+        // --- Reset initial state ---
+        // Ensure first image is visible and correctly positioned, others hidden/off-screen
+        images.forEach((img, index) => {
+            // Remove animation classes in case navigation happened mid-animation
+            img.classList.remove('slide-out-left', 'slide-in-right');
+            if (index === 0) {
+                img.style.transform = "translateX(0)";
+                img.style.visibility = "visible";
+            } else {
+                img.style.transform = "translateX(100%)";
+                img.style.visibility = "hidden";
+            }
+        });
+        // console.log("Hero slider initialized/reset"); // Optional: for debugging
 
-            // Ensure the next image is visible and positioned off-screen
+        function changeBackground() {
+            // Ensure we still have images (might be needed if DOM changes unexpectedly)
+             const currentImages = document.querySelectorAll(".slider-image");
+             if (currentImages.length === 0) {
+                 clearInterval(heroSliderIntervalId); // Stop if images disappear
+                 return;
+             }
+
+            const currentImage = currentImages[currentIndex];
+            const nextIndex = (currentIndex + 1) % currentImages.length;
+            const nextImage = currentImages[nextIndex];
+
+            // Ensure the next image is visible and positioned off-screen before animation
             nextImage.style.visibility = "visible";
             nextImage.style.transform = "translateX(100%)";
 
@@ -81,24 +118,47 @@
             currentImage.classList.add("slide-out-left");
             nextImage.classList.add("slide-in-right");
 
-            // Wait for the animation to complete
+            // Wait for the animation to complete (use animation duration)
+            // Use setTimeout for cleanup after animation
             setTimeout(() => {
-                // Reset classes and positions
-                currentImage.classList.remove("slide-out-left");
-                currentImage.style.visibility = "hidden";
-                currentImage.style.transform = "translateX(100%)";
+                // Check if elements still exist before manipulating
+                if (currentImage) {
+                    currentImage.classList.remove("slide-out-left");
+                    currentImage.style.visibility = "hidden";
+                    // Reset transform after it's hidden
+                    currentImage.style.transform = "translateX(100%)";
+                }
+                if (nextImage) {
+                    nextImage.classList.remove("slide-in-right");
+                    // Ensure final position is correct
+                    nextImage.style.transform = "translateX(0)";
+                }
 
-                nextImage.classList.remove("slide-in-right");
-                nextImage.style.transform = "translateX(0)";
-
-                // Update the current index
+                // Update the current index *after* the transition logic for the next cycle
                 currentIndex = nextIndex;
-            }, 3000); // Match the duration of the CSS animation
-        } 
 
-        // Start the background transition every x seconds
-        setInterval(changeBackground, 8000);
-    });
+            }, 2500); // Match the duration of the CSS animation (2500ms)
+        }
+
+        // Start the background transition interval and store its ID
+        heroSliderIntervalId = setInterval(changeBackground, 7500); // Total cycle time
+    }
+
+    // Run the initialization function on initial page load
+    initializeHeroSlider();
+
+    // Add the event listener to re-initialize after client-side navigation
+    document.addEventListener("astro:page-load", initializeHeroSlider);
+
+    // Optional: Cleanup when navigating away (might be redundant if astro:page-load clears correctly)
+    // document.addEventListener("astro:before-swap", () => {
+    //    if (heroSliderIntervalId) {
+    //        clearInterval(heroSliderIntervalId);
+    //        heroSliderIntervalId = null;
+    //        console.log("Cleared hero interval on page unload");
+    //    }
+    // });
+
 </script>
 
 <style>
@@ -108,7 +168,7 @@
 }
 
 .slide-out-left {
-    animation: slide-out-left 2000ms forwards;
+    animation: slide-out-left 2500ms forwards;
 }
 
 @keyframes slide-out-left {
@@ -121,7 +181,7 @@
 }
 
 .slide-in-right {
-    animation: slide-in-right 2000ms forwards;
+    animation: slide-in-right 2500ms forwards;
 }
 
 @keyframes slide-in-right {

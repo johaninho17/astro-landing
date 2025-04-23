@@ -261,23 +261,25 @@ family.
         </div>
     </div>
 
-    <script type="module" client:visible>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Add event listeners for each "Read More" link
-            const toggleLinks = document.querySelectorAll(
-                "[id^='toggle-link-']",
-            );
+    <script>
+        function initializeReadMore() {
+            const toggleLinks = document.querySelectorAll(".toggle-link"); // Use class selector
+
             toggleLinks.forEach((link) => {
+                // Check if listener already attached to prevent duplicates on HMR
+                if (link.dataset.listenerAttached === 'true') return;
+
                 link.addEventListener("click", (event) => {
                     event.preventDefault(); // Prevent the default link behavior
 
-                    const id = link.id.split("-")[2]; // Extract the unique ID from the link's ID
-                    const shortDescription = document.getElementById(
-                        `short-description-${id}`,
-                    );
-                    const fullDescription = document.getElementById(
-                        `full-description-${id}`,
-                    );
+                    // Use closest ancestor to find the parent container if IDs change
+                    const container = link.closest('dd'); // Find the parent <dd>
+                    if (!container) return;
+
+                    const shortDescription = container.querySelector('.short-description');
+                    const fullDescription = container.querySelector('.full-description');
+
+                    if (!shortDescription || !fullDescription) return;
 
                     if (fullDescription.classList.contains("hidden")) {
                         // Show full description
@@ -291,7 +293,14 @@ family.
                         link.textContent = "Read More";
                     }
                 });
+                 link.dataset.listenerAttached = 'true'; // Mark as attached
             });
-        });
+        }
+
+        // Run on initial load
+        initializeReadMore();
+
+        // Run on subsequent client-side navigations
+        document.addEventListener("astro:page-load", initializeReadMore);
     </script>
 </Layout>

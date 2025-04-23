@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { sendFormData } from "../lib/firebase";
-
+// Removed firebase import from frontmatter as it's only used client-side now
 ---
 
 <Layout title="Contact Us - GoEurope Consulting">
@@ -173,35 +172,38 @@ import { sendFormData } from "../lib/firebase";
     <script>
         import { sendFormData } from '../lib/firebase'; // Ensure path is correct
 
-        document.addEventListener("DOMContentLoaded", () => {
+        function initializeContactForm() {
             const form = document.getElementById("contactForm");
             const messageBox = document.getElementById("id_message");
             const charCount = document.getElementById("charCount");
-            // REMOVED: const formStatus = document.getElementById("formStatus");
-            const submitButton = form.querySelector("button[type='submit']");
+            const submitButton = form?.querySelector("button[type='submit']"); // Use optional chaining
 
             // Modal elements
             const statusModal = document.getElementById("statusModal");
-            const modalDialog = document.getElementById("modalDialog"); // Get the inner dialog for transitions
+            const modalDialog = document.getElementById("modalDialog");
             const modalMessage = document.getElementById("modalMessage");
             const closeModalBtn = document.getElementById("closeModalBtn");
             const modalOkBtn = document.getElementById("modalOkBtn");
 
-            // Function to show the modal
-            function showModal(message, type = "info") { // type can be 'success', 'error', 'info'
-                modalMessage.textContent = message;
-                // Adjust styling based on type
-                if (type === 'success') {
-                    modalMessage.className = 'text-sm text-green-600'; // Use Tailwind success color
-                } else if (type === 'error') {
-                    modalMessage.className = 'text-sm text-red-600'; // Use Tailwind error color
-                } else {
-                    modalMessage.className = 'text-sm text-gray-600'; // Default color
-                }
+            // Exit if essential elements aren't found (e.g., during HMR or partial rendering)
+            if (!form || !messageBox || !charCount || !submitButton || !statusModal || !modalDialog || !modalMessage || !closeModalBtn || !modalOkBtn) {
+                console.warn("Contact form elements not found, skipping initialization.");
+                return;
+            }
 
+            // --- Modal Logic ---
+            // Function to show the modal
+            function showModal(message, type = "info") {
+                modalMessage.textContent = message;
+                if (type === 'success') {
+                    modalMessage.className = 'text-sm text-green-600';
+                } else if (type === 'error') {
+                    modalMessage.className = 'text-sm text-red-600';
+                } else {
+                    modalMessage.className = 'text-sm text-gray-600';
+                }
                 statusModal.classList.remove('hidden');
-                statusModal.classList.add('flex'); // Use flex to center
-                // Trigger transition classes after a tiny delay for effect
+                statusModal.classList.add('flex');
                 requestAnimationFrame(() => {
                     statusModal.classList.add('opacity-100');
                     modalDialog.classList.add('scale-100', 'opacity-100');
@@ -214,53 +216,65 @@ import { sendFormData } from "../lib/firebase";
                 statusModal.classList.remove('opacity-100');
                 modalDialog.classList.remove('scale-100', 'opacity-100');
                 modalDialog.classList.add('scale-95', 'opacity-0');
-
-                // Wait for transition to finish before hiding completely
                 setTimeout(() => {
                     statusModal.classList.add('hidden');
                     statusModal.classList.remove('flex');
-                }, 300); // Match transition duration
+                }, 300);
             }
 
-            // Event listeners for closing the modal
-            closeModalBtn.addEventListener("click", hideModal);
-            modalOkBtn.addEventListener("click", hideModal);
-            // Optional: Close modal if clicking outside the dialog
-            statusModal.addEventListener("click", (event) => {
-                if (event.target === statusModal) { // Check if the click was directly on the overlay
-                    hideModal();
-                }
-            });
-
-
-            // Update character count on input
-            if (messageBox && charCount) {
-                messageBox.addEventListener("input", () => {
-                    charCount.textContent = `${messageBox.value.length}/600`;
+            // Add modal close listeners only once
+            if (closeModalBtn.dataset.listenerAttached !== 'true') {
+                closeModalBtn.addEventListener("click", hideModal);
+                closeModalBtn.dataset.listenerAttached = 'true';
+            }
+            if (modalOkBtn.dataset.listenerAttached !== 'true') {
+                modalOkBtn.addEventListener("click", hideModal);
+                modalOkBtn.dataset.listenerAttached = 'true';
+            }
+            if (statusModal.dataset.listenerAttached !== 'true') {
+                statusModal.addEventListener("click", (event) => {
+                    if (event.target === statusModal) {
+                        hideModal();
+                    }
                 });
-                 charCount.textContent = `${messageBox.value.length}/600`; // Initialize count
+                statusModal.dataset.listenerAttached = 'true';
             }
 
-            if (form) {
+
+            // --- Character Count Logic ---
+            // Add listener only once
+            if (messageBox.dataset.listenerAttached !== 'true') {
+                const updateCharCount = () => {
+                    charCount.textContent = `${messageBox.value.length}/600`;
+                };
+                messageBox.addEventListener("input", updateCharCount);
+                messageBox.dataset.listenerAttached = 'true';
+                updateCharCount(); // Initialize count
+            } else {
+                 // Ensure count is correct even if listener was already attached
+                 charCount.textContent = `${messageBox.value.length}/600`;
+            }
+
+
+            // --- Form Submission Logic ---
+            // Add listener only once
+            if (form.dataset.listenerAttached !== 'true') {
                 form.addEventListener("submit", async (event) => {
                     event.preventDefault();
                     submitButton.disabled = true;
                     submitButton.textContent = 'Sending...';
 
-                    // No longer need serverEndpoint check
-
                     const formData = new FormData(form);
                     const data = {
-                        full_name: formData.get("full_name")?.trim(),
-                        title: formData.get("title")?.trim(),
-                        email: formData.get("email")?.trim(),
-                        company_name: formData.get("company_name")?.trim(),
-                        url: formData.get("url")?.trim(),
-                        message: formData.get("message")?.trim(),
+                        full_name: formData.get("full_name")?.trim() || '', // Provide default empty string
+                        title: formData.get("title")?.trim() || '',
+                        email: formData.get("email")?.trim() || '',
+                        company_name: formData.get("company_name")?.trim() || '',
+                        url: formData.get("url")?.trim() || '',
+                        message: formData.get("message")?.trim() || '',
                         submittedAt: new Date().toISOString(),
                     };
 
-                    // Basic validation check remains the same...
                     if (!data.full_name || !data.title || !data.email || !data.company_name || !data.message) {
                         showModal("Please fill in all required fields.", "error");
                         submitButton.disabled = false;
@@ -268,34 +282,32 @@ import { sendFormData } from "../lib/firebase";
                         return;
                     }
 
-                    // Simplified try/catch/finally
                     try {
-                        // --- Send to Firebase (which now also triggers email) ---
                         console.log("Saving data and triggering email via Firebase:", data);
-                        await sendFormData(data); // This now handles both Firestore writes
+                        await sendFormData(data);
                         console.log("Data saved and email trigger initiated.");
-
-                        // --- Handle Success ---
-                        showModal("Message sent successfully!", "success");
+                        showModal("Message sent successfully! We'll get back to you shortly.", "success");
                         form.reset();
-                        if (messageBox && charCount) {
-                           charCount.textContent = `0/600`; // Reset char count
-                        }
+                        charCount.textContent = `0/600`; // Reset char count after successful reset
 
                     } catch (error) {
-                        // --- Handle Error (from batch commit) ---
                         console.error("Error processing form submission:", error);
                         showModal("Failed to send message. Please try again later.", "error");
 
                     } finally {
-                        // --- Re-enable button ---
                         submitButton.disabled = false;
                         submitButton.textContent = 'Send message';
                     }
                 });
-            } else {
-                console.error("Contact form not found");
+                form.dataset.listenerAttached = 'true'; // Mark form listener as attached
             }
-        });
+        } // End of initializeContactForm function
+
+        // Run on initial load
+        initializeContactForm();
+
+        // Run on subsequent client-side navigations
+        document.addEventListener("astro:page-load", initializeContactForm);
+
       </script>
 </Layout>
