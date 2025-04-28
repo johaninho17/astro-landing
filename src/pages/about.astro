@@ -6,24 +6,24 @@ interface Props {}
 const {} = Astro.props;
 ---
 
-<Layout title="About Us - GoEurope" >
+<Layout title="About Us - GoEurope">
     <div class="">
         <div id="background" class="relative isolate w-full">
             <!-- Image -->
             <img
-                src="images/positive-startup-group-with-laptops-chatting-meeting-room.png"
+                src="/images/positive-startup-group-with-laptops-chatting-meeting-room.png"
                 alt="Meeting"
                 class="w-full h-auto object-cover"
             />
             <!-- Text Overlay -->
-            <div class="absolute inset-0 flex items-center justify-center ">
+            <div class="absolute inset-0 flex items-center justify-center">
                 <div class="text-center px-4 md:px-6">
                     <h1
                         class="text-4xl font-bold tracking-tight text-white sm:text-6xl"
                     >
                         Who We Are
                     </h1>
-                 </div>
+                </div>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@ const {} = Astro.props;
                             class="text-4xl font-extrabold text-black sm:text-3xl"
                         >
                             About Us
-                    </h3>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -57,14 +57,11 @@ const {} = Astro.props;
         </div>
 
         <div class="px-4">
-            <div class="mx-auto max-w-2xl lg:text-center mt-12 ">
-                <h1
-                    class=" text-4xl font-extrabold"
-                    
-                >
+            <div class="mx-auto max-w-2xl lg:text-center mt-12">
+                <h1 class="text-4xl font-extrabold">
                     <strong>Meet the Team</strong>
                 </h1>
-             </div>
+            </div>
 
             <div
                 id="team"
@@ -72,235 +69,268 @@ const {} = Astro.props;
             >
                 <!-- Team Member 1 -->
                 <div class="mx-4">
-                <div
-                    class="relative rounded-3xl p-8 ring-1 ring-gray-900/10 bg-[#F6F6F6] shadow-2xl"
-                >
-                    <dt class="text-base font-semibold leading-7 text-gray-900 flex flex-col items-center md:flex-row md:items-start">
-                        <div class="mb-2 items-center justify-center">
-                            <img src="images/jurgen.png" alt="" />
-                        </div>
-                        <dd class="text-xl font-bold text-gray-900"> Jürgen Müller </dd>
-                    </dt>
-                    <dd
-                        class="text-base leading-7 text-gray-600 text-sm font-medium"
+                    <div
+                        class="relative rounded-3xl p-8 ring-1 ring-gray-900/10 bg-[#F6F6F6] shadow-2xl"
                     >
-                        Managing Partner
-                    </dd>
-                    <dd
-                        class="text-base leading-7  text-gray-600 text-s flex items-center"
-                    >
-                        <img
-                            src="images/svg/linkedin.svg"
-                            alt="LinkedIn"
-                            class="w-4 h-4 mr-2 object-contain"
-                        />
-                        <a
-                            target="_blank"
-                            href="https://www.linkedin.com/in/mueller-juergen"
-                            class="text-blue-500 hover:text-blue-700 italic underline"
+                        <dt
+                            class="text-base font-semibold leading-7 text-gray-900 flex flex-col items-center md:flex-row md:items-start"
                         >
-                            CONNECT ON LINKEDIN
-                        </a>
-                    </dd>
-                    <dd class="text-base leading-7 text-gray-600 text-s ">
-                        <span
-                            id="short-description-1"
-                            class="short-description line-clamp-3"
-                          >
-                            With over 30 years in the IT industry, Jürgen has
-                            held general management positions in North America and Europe...
-                        </span>
-                        <span
-                            id="full-description-1"
-                            class="hidden full-description"
+                            <div class="mb-2 items-center justify-center">
+                                <img src="/images/jurgen.png" alt="" />
+                            </div>
+                            <dd class="text-xl font-bold text-gray-900">
+                                Jürgen Müller
+                            </dd>
+                        </dt>
+                        <dd
+                            class="text-base leading-7 text-gray-600 text-sm font-medium"
                         >
-                        With over 30 years in the IT industry, Jürgen has held general management and
-                        global and regional sales positions in North America and Europe. - Primarily for
-                        NASDAQ-listed U.S. software companies. He co-founded a startup, overseeing sales
-                        and product development for seven years. He authored the book “Turning Point. –
-                        How IT is changing our world”. Based in Düsseldorf, Germany, he enjoys spending
-                        time with his wife, two children, and the dogs, and whenever possible, cruising on his
-                        motorbike.
-                        </span>
-                        <a
-                            id="toggle-link-1"
-                            href="#"
-                            class="text-[#B6CB23] hover:text-gray-500 italic underline mt-2 toggle-link"
+                            Managing Partner
+                        </dd>
+                        <dd
+                            class="text-base leading-7 text-gray-600 text-s flex items-center"
                         >
-                            Read More
-                        </a>
-                    </dd>
-                </div>
+                            <img
+                                src="/images/svg/linkedin.svg"
+                                alt="LinkedIn"
+                                class="w-4 h-4 mr-2 object-contain"
+                            />
+                            <a
+                                target="_blank"
+                                href="https://www.linkedin.com/in/mueller-juergen"
+                                class="text-blue-500 hover:text-blue-700 italic underline"
+                            >
+                                CONNECT ON LINKEDIN
+                            </a>
+                        </dd>
+                        <dd class="text-base leading-7 text-gray-600 text-s">
+                            <span
+                                id="short-description-1"
+                                class="short-description line-clamp-3"
+                            >
+                                With over 30 years in the IT industry, Jürgen
+                                has held general management positions in North
+                                America and Europe...
+                            </span>
+                            <span
+                                id="full-description-1"
+                                class="hidden full-description"
+                            >
+                                With over 30 years in the IT industry, Jürgen
+                                has held general management and global and
+                                regional sales positions in North America and
+                                Europe. - Primarily for NASDAQ-listed U.S.
+                                software companies. He co-founded a startup,
+                                overseeing sales and product development for
+                                seven years. He authored the book “Turning
+                                Point. – How IT is changing our world”. Based in
+                                Düsseldorf, Germany, he enjoys spending time
+                                with his wife, two children, and the dogs, and
+                                whenever possible, cruising on his motorbike.
+                            </span>
+                            <a
+                                id="toggle-link-1"
+                                href="#"
+                                class="text-[#B6CB23] hover:text-gray-500 italic underline mt-2 toggle-link"
+                            >
+                                Read More
+                            </a>
+                        </dd>
+                    </div>
                 </div>
 
-                 <!-- Team Member 2 -->
-                 <div class="mx-4">
-                <div
-                    class="relative rounded-3xl p-8 ring-1 ring-gray-900/10 bg-[#F6F6F6] shadow-2xl"
-                 >                    
-                    <dt class="text-base font-semibold leading-7 text-gray-900 flex flex-col items-center md:flex-row md:items-start">
-                        <div class="mb-2 items-center justify-center">
-                            <img class="" src="images/merlin.png" alt="" />
-                        </div>
-                            <dd class="text-xl font-bold text-gray-900"> Merlin Yamssi </dd>
-                    </dt>
-                    <dd
-                        class="text-base leading-7 text-gray-600 text-sm font-medium"
+                <!-- Team Member 2 -->
+                <div class="mx-4">
+                    <div
+                        class="relative rounded-3xl p-8 ring-1 ring-gray-900/10 bg-[#F6F6F6] shadow-2xl"
                     >
-                        Advisor
-                    </dd>
-                    <dd
-                        class="text-base leading-7  text-gray-600 text-s flex items-center"
-                    >
-                        <img
-                            src="images/svg/linkedin.svg"
-                            alt="LinkedIn"
-                            class="w-4 h-4 mr-2 object-contain"
-                        />
-                        <a
-                            target="_blank"
-                            href="https://www.linkedin.com/in/yamssi/"
-                            class="text-blue-500 hover:text-blue-700 italic underline"
+                        <dt
+                            class="text-base font-semibold leading-7 text-gray-900 flex flex-col items-center md:flex-row md:items-start"
                         >
-                            CONNECT ON LINKEDIN
-                        </a>
-                    </dd>
-                    <dd class="text-base leading-7 text-gray-600 text-s ">
-                        <span
-                            id="short-description-2"
-                            class="short-description line-clamp-3"
-                          >
-                          With over 30 years in High Tech, Merlin Yamssi is a visionary leader who empowers businesses to embrace the future
-                        through digital transformation... 
-                        </span>
-                        <span
-                            id="full-description-2"
-                            class="hidden full-description"
+                            <div class="mb-2 items-center justify-center">
+                                <img class="" src="/images/merlin.png" alt="" />
+                            </div>
+                            <dd class="text-xl font-bold text-gray-900">
+                                Merlin Yamssi
+                            </dd>
+                        </dt>
+                        <dd
+                            class="text-base leading-7 text-gray-600 text-sm font-medium"
                         >
-                        With over 30 years in High Tech, Merlin Yamssi is a visionary leader who empowers businesses to embrace the future
-                        through digital transformation. With 30+ years of experience across industries, he
-                        leverages cutting-edge technologies like AI, Cloud, and Web3 to unlock new
-                        possibilities and deliver tangible results. Merlin&#39;s passion lies in co-innovating with
-                        clients, crafting pragmatic strategies, and turning ideas into impactful solutions. He is
-                        a trusted advisor, a strategic thinker, and a catalyst for growth in the digital age.
-                        </span>
-                        <a
-                            id="toggle-link-2"
-                            href="#"
-                            class="text-[#B6CB23] hover:text-gray-500 italic underline mt-2 toggle-link"
+                            Advisor
+                        </dd>
+                        <dd
+                            class="text-base leading-7 text-gray-600 text-s flex items-center"
                         >
-                            Read More
-                        </a>
-                    </dd>
-                </div>
+                            <img
+                                src="/images/svg/linkedin.svg"
+                                alt="LinkedIn"
+                                class="w-4 h-4 mr-2 object-contain"
+                            />
+                            <a
+                                target="_blank"
+                                href="https://www.linkedin.com/in/yamssi/"
+                                class="text-blue-500 hover:text-blue-700 italic underline"
+                            >
+                                CONNECT ON LINKEDIN
+                            </a>
+                        </dd>
+                        <dd class="text-base leading-7 text-gray-600 text-s">
+                            <span
+                                id="short-description-2"
+                                class="short-description line-clamp-3"
+                            >
+                                With over 30 years in High Tech, Merlin Yamssi
+                                is a visionary leader who empowers businesses to
+                                embrace the future through digital
+                                transformation...
+                            </span>
+                            <span
+                                id="full-description-2"
+                                class="hidden full-description"
+                            >
+                                With over 30 years in High Tech, Merlin Yamssi
+                                is a visionary leader who empowers businesses to
+                                embrace the future through digital
+                                transformation. He leverages cutting-edge
+                                technologies like AI, Cloud, and Web3 to unlock
+                                new possibilities and deliver tangible results.
+                                Merlin&#39;s passion lies in co-innovating with
+                                clients, crafting pragmatic strategies, and
+                                turning ideas into impactful solutions. He is a
+                                trusted advisor, a strategic thinker, and a
+                                catalyst for growth in the digital age.
+                            </span>
+                            <a
+                                id="toggle-link-2"
+                                href="#"
+                                class="text-[#B6CB23] hover:text-gray-500 italic underline mt-2 toggle-link"
+                            >
+                                Read More
+                            </a>
+                        </dd>
+                    </div>
                 </div>
 
                 <!-- Team Member 3 -->
                 <div class="mx-4">
                     <div
                         class="relative rounded-3xl p-8 ring-1 ring-gray-900/10 bg-[#F6F6F6] shadow-2xl"
-                     >                    
-                    <dt class="text-base font-semibold leading-7 text-gray-900 flex flex-col items-center md:flex-row md:items-start">
-                           
-                        <div class="mb-2 items-center justify-center">
-                            <img class="" src="images/robert.png" alt="" />
-                        </div>
-                        <dd class="text-xl font-bold text-gray-900">Robert Gessner </dd>
-                    </dt>
-                    <dd
-                        class="text-base leading-7 text-gray-600 text-sm font-medium"
                     >
-                        Partner
-                    </dd>
-                    <dd
-                        class="text-base leading-7  text-gray-600 text-s flex items-center"
-                    >
-                        <img
-                            src="images/svg/linkedin.svg"
-                            alt="LinkedIn"
-                            class="w-4 h-4 mr-2 object-contain"
-                        />
-                        <a
-                            target="_blank"
-                            href="https://www.linkedin.com/in/robertgessner/"
-                            class="text-blue-500 hover:text-blue-700 italic underline"
+                        <dt
+                            class="text-base font-semibold leading-7 text-gray-900 flex flex-col items-center md:flex-row md:items-start"
                         >
-                            CONNECT ON LINKEDIN
-                        </a>
-                    </dd>
-                    <dd class="text-base leading-7 text-gray-600 text-s ">
-                        <span
-                            id="short-description-3"
-                            class="short-description line-clamp-3"
-                          >
-                        With over 25 years of international IT industry experience, Robert has held leadership roles
-                        in sales, operations, and market strategy across EMEA and global markets...
-                        </span>
-                        <span
-                            id="full-description-3"
-                            class="hidden full-description"
+                            <div class="mb-2 items-center justify-center">
+                                <img class="" src="/images/robert.png" alt="" />
+                            </div>
+                            <dd class="text-xl font-bold text-gray-900">
+                                Robert Gessner
+                            </dd>
+                        </dt>
+                        <dd
+                            class="text-base leading-7 text-gray-600 text-sm font-medium"
                         >
-                        With over 25 years of international IT industry experience, Robert has held leadership roles
-in sales, operations, and market strategy across EMEA and global markets. He led
-international sales planning, sales operations, and strategic Go-to-market programs. He
-scaled operations and sales processes across EMEA and APAC. Robert is known for driving
-growth through cross-functional team management and executing high-impact initiatives.
-Robert lives near Zürich, Switzerland and loves cycling, hiking and cooking for friends and
-family.
-                        </span>
-                        <a
-                            id="toggle-link-3"
-                            href="#"
-                            class="text-[#B6CB23] hover:text-gray-500 italic underline toggle-link"
+                            Partner
+                        </dd>
+                        <dd
+                            class="text-base leading-7 text-gray-600 text-s flex items-center"
                         >
-                            Read More
-                        </a>
-                    </dd>
+                            <img
+                                src="/images/svg/linkedin.svg"
+                                alt="LinkedIn"
+                                class="w-4 h-4 mr-2 object-contain"
+                            />
+                            <a
+                                target="_blank"
+                                href="https://www.linkedin.com/in/robertgessner/"
+                                class="text-blue-500 hover:text-blue-700 italic underline"
+                            >
+                                CONNECT ON LINKEDIN
+                            </a>
+                        </dd>
+                        <dd class="text-base leading-7 text-gray-600 text-s">
+                            <span
+                                id="short-description-3"
+                                class="short-description line-clamp-3"
+                            >
+                                With over 25 years of international IT industry
+                                experience, Robert has held leadership roles in
+                                sales, operations, and market strategy across
+                                EMEA and global markets...
+                            </span>
+                            <span
+                                id="full-description-3"
+                                class="hidden full-description"
+                            >
+                                With over 25 years of international IT industry
+                                experience, Robert has held leadership roles in
+                                sales, operations, and market strategy across
+                                EMEA and global markets. He led international
+                                sales planning, sales operations, and strategic
+                                Go-to-market programs. He scaled operations and
+                                sales processes across EMEA and APAC. Robert is
+                                known for driving growth through
+                                cross-functional team management and executing
+                                high-impact initiatives. Robert lives near
+                                Zürich, Switzerland and loves cycling, hiking
+                                and cooking for friends and family.
+                            </span>
+                            <a
+                                id="toggle-link-3"
+                                href="#"
+                                class="text-[#B6CB23] hover:text-gray-500 italic underline toggle-link"
+                            >
+                                Read More
+                            </a>
+                        </dd>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        function initializeReadMore() {
-            const toggleLinks = document.querySelectorAll(".toggle-link"); // Use class selector
+        <script>
+            function initializeReadMore() {
+                const toggleLinks = document.querySelectorAll(".toggle-link"); // Use class selector
 
-            toggleLinks.forEach((link) => {
-                // Check if listener already attached to prevent duplicates on HMR
-                if (link.dataset.listenerAttached === 'true') return;
+                toggleLinks.forEach((link) => {
+                    // Check if listener already attached to prevent duplicates on HMR
+                    if (link.dataset.listenerAttached === "true") return;
 
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Prevent the default link behavior
+                    link.addEventListener("click", (event) => {
+                        event.preventDefault(); // Prevent the default link behavior
 
-                    // Use closest ancestor to find the parent container if IDs change
-                    const container = link.closest('dd'); // Find the parent <dd>
-                    if (!container) return;
+                        // Use closest ancestor to find the parent container if IDs change
+                        const container = link.closest("dd"); // Find the parent <dd>
+                        if (!container) return;
 
-                    const shortDescription = container.querySelector('.short-description');
-                    const fullDescription = container.querySelector('.full-description');
+                        const shortDescription =
+                            container.querySelector(".short-description");
+                        const fullDescription =
+                            container.querySelector(".full-description");
 
-                    if (!shortDescription || !fullDescription) return;
+                        if (!shortDescription || !fullDescription) return;
 
-                    if (fullDescription.classList.contains("hidden")) {
-                        // Show full description
-                        fullDescription.classList.remove("hidden");
-                        shortDescription.classList.add("hidden");
-                        link.textContent = "Read Less";
-                    } else {
-                        // Hide full description
-                        fullDescription.classList.add("hidden");
-                        shortDescription.classList.remove("hidden");
-                        link.textContent = "Read More";
-                    }
+                        if (fullDescription.classList.contains("hidden")) {
+                            // Show full description
+                            fullDescription.classList.remove("hidden");
+                            shortDescription.classList.add("hidden");
+                            link.textContent = "Read Less";
+                        } else {
+                            // Hide full description
+                            fullDescription.classList.add("hidden");
+                            shortDescription.classList.remove("hidden");
+                            link.textContent = "Read More";
+                        }
+                    });
+                    link.dataset.listenerAttached = "true"; // Mark as attached
                 });
-                 link.dataset.listenerAttached = 'true'; // Mark as attached
-            });
-        }
+            }
 
-        // Run on initial load
-        initializeReadMore();
+            // Run on initial load
+            initializeReadMore();
 
-        // Run on subsequent client-side navigations
-        document.addEventListener("astro:page-load", initializeReadMore);
-    </script>
+            // Run on subsequent client-side navigations
+            document.addEventListener("astro:page-load", initializeReadMore);
+        </script>
+    </div>
 </Layout>
